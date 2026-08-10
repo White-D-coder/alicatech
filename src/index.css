@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --alica-green: #062b35;
+    --alica-brand-green: #006828;
+    --alica-yellow: #ffc82e;
+    --alica-yellow-hover: #ffd34f;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #1e293b;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  h1, h2, h3, .font-montserrat {
+    font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Vertical guide lines background overlay */
+.bg-grid-lines {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 25% 100%;
+}
+
+/* Animated yellow stroke keyframe drawing effect */
+@keyframes drawYellowStroke {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-yellow-stroke {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawYellowStroke 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
