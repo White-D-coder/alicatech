@@ -27,7 +27,34 @@ function App() {
       case 'about':
         return <AboutPage />;
       case 'services':
-        return <ServicesPage />;
+      case 'service-smt':
+        return (
+          <ServicesPage
+            serviceType="service-smt"
+            onNavigateService={(key) => setCurrentPage(key)}
+          />
+        );
+      case 'service-testing':
+        return (
+          <ServicesPage
+            serviceType="service-testing"
+            onNavigateService={(key) => setCurrentPage(key)}
+          />
+        );
+      case 'service-turnkey':
+        return (
+          <ServicesPage
+            serviceType="service-turnkey"
+            onNavigateService={(key) => setCurrentPage(key)}
+          />
+        );
+      case 'service-end-to-end':
+        return (
+          <ServicesPage
+            serviceType="service-end-to-end"
+            onNavigateService={(key) => setCurrentPage(key)}
+          />
+        );
       case 'capabilities':
         return <CapabilitiesPage />;
       case 'industries':
