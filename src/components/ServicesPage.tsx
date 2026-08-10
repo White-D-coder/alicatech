@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, Check, Phone } from 'lucide-react';
 
-export const ServicesPage = () => {
+export interface ServicesPageProps {
+  serviceType?: 'service-smt' | 'service-testing' | 'service-turnkey' | 'service-end-to-end';
+  onNavigateService?: (serviceKey: string) => void;
+}
+
+export const ServicesPage = ({
+  serviceType = 'service-smt',
+  onNavigateService,
+}: ServicesPageProps) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -21,74 +23,210 @@ export const ServicesPage = () => {
     }, 4000);
   };
 
-  const faqs = [
-    {
-      q: 'What types of PCB assemblies do you support?',
-      a: 'We support SMT, Thru-Hole, and mixed-technology PCB assemblies for a wide range of electronic applications.',
+  // Data config for all 4 Service Pages matching exact uploaded screenshots
+  const servicesConfig = {
+    'service-smt': {
+      title: 'SMT & THT PCB Assembly',
+      heroSubtitle: 'High-precision surface mount and thru-hole PCB assembly for reliable electronic products.',
+      image: '/2151575719.jpg',
+      quickNav: [
+        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
+        { label: 'Testing & Inspection', key: 'service-testing' },
+        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+      ],
+      p1: 'Our SMT and Thru-Hole PCB assembly services are designed to meet high accuracy, repeatability, and quality requirements. Alica\'s production lines are equipped to handle complex layouts, fine-pitch components, and mixed-technology assemblies.',
+      p2: 'Automated stencil printing, high-speed pick-and-place machines, and controlled reflow processes ensure consistent assembly quality across all builds.',
+      benefitsTitle: 'Plan Benefits',
+      benefits: [
+        'Precision assembly with minimal defects',
+        'Component sizes from 01005 to large packages',
+        'Consistent output across production runs',
+        'BGA, QFN, fine-pitch IC handling',
+        'Support for prototypes and small batches',
+        'Double-sided PCB assembly',
+        'Advanced SMT line with inline inspection',
+        'Leaded and lead-free processes',
+        'High placement accuracy and repeatability',
+      ],
+      faqs: [
+        {
+          q: 'What types of PCB assemblies do you support?',
+          a: 'We support SMT, Thru-Hole, and mixed-technology PCB assemblies for a wide range of electronic applications.',
+        },
+        {
+          q: 'What component sizes can you handle?',
+          a: 'Our SMT lines can handle components down to 01005 package size up to large ICs, BGAs, QFNs, and custom odd-form components.',
+        },
+        {
+          q: 'Do you handle double-sided PCB assemblies?',
+          a: 'Yes, we provide single-sided and double-sided SMT and THT PCB assemblies with high placement accuracy and inline inspection.',
+        },
+        {
+          q: 'Do you support lead-free manufacturing?',
+          a: 'Yes, we strictly comply with RoHS and IPC standards, supporting both leaded and lead-free soldering processes.',
+        },
+      ],
     },
-    {
-      q: 'What component sizes can you handle?',
-      a: 'Our SMT lines can handle components down to 01005 package size up to large ICs, BGAs, QFNs, and custom odd-form components.',
+
+    'service-testing': {
+      title: 'Testing & Inspection',
+      heroSubtitle: 'Advanced inspection and testing to ensure quality, reliability, and compliance.',
+      image: '/2151615028.jpg',
+      quickNav: [
+        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
+        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
+        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+      ],
+      p1: 'Quality control is integrated into every stage of our manufacturing process. Our testing and inspection services are designed to identify defects early, reduce rework, and ensure compliance with defined specifications.',
+      p2: 'We use industry-leading inspection systems to verify solder quality, component placement, and functional performance.',
+      benefitsTitle: 'Service Benefits',
+      benefits: [
+        'Early defect detection',
+        'Solder Paste Inspection (SPI) – 3D volume measurement',
+        'Reduced rework and production risk',
+        'Automated Optical Inspection (AOI) – 3D / 4D inline',
+        'Improved product reliability',
+        '2.5D & 3D X-Ray Inspection – BGA and fine-pitch analysis',
+        'Inspection coverage across critical stages',
+        'Functional Testing (as per project requirement)',
+        'Impedance & Voltage Testing',
+      ],
+      faqs: [
+        {
+          q: 'What inspection methods are used during manufacturing?',
+          a: 'We use SPI, AOI (3D/4D), 2.5D and 3D X-Ray inspection, along with functional testing based on project needs.',
+        },
+        {
+          q: 'Why is X-ray inspection important for PCB assemblies?',
+          a: 'X-Ray inspection allows non-destructive verification of hidden solder joints, such as BGAs, QFNs, and multi-layer boards.',
+        },
+        {
+          q: 'Do you offer functional testing?',
+          a: 'Yes, we develop custom functional testing setups to verify electrical logic and operational parameters before dispatch.',
+        },
+      ],
     },
-    {
-      q: 'Do you handle double-sided PCB assemblies?',
-      a: 'Yes, we provide single-sided and double-sided SMT and THT PCB assemblies with high placement accuracy and inline inspection.',
+
+    'service-turnkey': {
+      title: 'Turnkey Project Delivery',
+      heroSubtitle: 'Complete electronic manufacturing solutions managed under one partner.',
+      image: '/procurement-manager-reviewing-manufacturing-contract-factory.jpg',
+      quickNav: [
+        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
+        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
+        { label: 'Testing & Inspection', key: 'service-testing' },
+      ],
+      p1: 'Our turnkey project delivery services simplify electronic manufacturing by managing the complete process from component procurement to final delivery. This approach reduces coordination effort, shortens lead times, and ensures consistent quality.',
+      p2: 'Turnkey manufacturing is ideal for clients looking for a single, accountable EMS partner.',
+      benefitsTitle: 'Service Benefits',
+      benefits: [
+        'Single-point responsibility',
+        'Component sourcing and procurement',
+        'Improved cost and schedule control',
+        'PCB assembly and inspection',
+        'Reduced supply chain complexity',
+        'Functional testing',
+        'Reliable execution and delivery',
+        'Box build and final assembly',
+        'Packaging and delivery coordination',
+      ],
+      faqs: [
+        {
+          q: 'What is included in turnkey project delivery?',
+          a: 'Turnkey project delivery includes component sourcing, PCB assembly, inspection, testing, box build, and final delivery.',
+        },
+        {
+          q: 'Do you manage component procurement?',
+          a: 'Yes, our procurement team sources components from certified global distributors with complete BOM traceability.',
+        },
+        {
+          q: 'Is turnkey manufacturing suitable for low-volume projects?',
+          a: 'Yes, we support turnkey projects from prototype and low-volume builds up to full volume production.',
+        },
+        {
+          q: 'How does turnkey manufacturing reduce project complexity?',
+          a: 'By managing procurement, assembly, testing, and box build under one roof, we eliminate multi-vendor coordination risks.',
+        },
+      ],
     },
-    {
-      q: 'Do you support lead-free manufacturing?',
-      a: 'Yes, we strictly comply with RoHS and IPC standards, supporting both leaded and lead-free soldering processes.',
+
+    'service-end-to-end': {
+      title: 'End-to-End Electronic Manufacturing',
+      heroSubtitle: 'Complete electronic manufacturing services supporting your product from prototype to production.',
+      image: '/PCB-assembly-partner-in-Ahmedabad.jpg',
+      quickNav: [
+        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
+        { label: 'Testing & Inspection', key: 'service-testing' },
+        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+      ],
+      p1: 'Alica Technologies LLP provides comprehensive electronic manufacturing services covering every stage of the product lifecycle. Our end-to-end approach ensures controlled processes, consistent quality, and dependable delivery for electronic assemblies.',
+      p2: 'We combine advanced manufacturing equipment, trained technical teams, and IPC-recommended operating procedures to support reliable and repeatable production outcomes.',
+      benefitsTitle: 'Plan Benefits',
+      benefits: [
+        'Prototype to low and medium volume production',
+        'Single manufacturing partner for complete execution',
+        'SMT & Thru-Hole PCB assembly',
+        'Reduced coordination and production risk',
+        'Advanced inspection and testing',
+        'Consistent quality and traceability',
+        'Controlled manufacturing environment',
+        'Faster turnaround and controlled timelines',
+        'End-to-end project coordination',
+      ],
+      faqs: [
+        {
+          q: 'What does end-to-end electronic manufacturing include?',
+          a: 'End-to-end electronic manufacturing covers PCB assembly, inspection, testing, and final delivery under a single controlled manufacturing process.',
+        },
+        {
+          q: 'Do you support both prototyping and production?',
+          a: 'Yes, we provide seamless scaling from initial NPI prototype validation into full-scale production runs.',
+        },
+        {
+          q: 'How do you ensure quality across the manufacturing process?',
+          a: 'Through inline SPI, AOI, X-Ray, and strict IPC-A-610 standards enforced at every manufacturing milestone.',
+        },
+      ],
     },
-  ];
+  };
+
+  const currentConfig = servicesConfig[serviceType] || servicesConfig['service-smt'];
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. Top Green Hero Banner */}
+      {/* 1. Top Green Hero Banner (Always Primary Green #355c31) */}
       <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-montserrat tracking-tight leading-tight">
-            SMT & THT PCB Assembly
+          <h1 className="text-3xl sm:text-5xl font-extrabold font-montserrat tracking-tight leading-tight max-w-4xl mx-auto">
+            {currentConfig.title}
           </h1>
-          <ChevronDown size={22} className="opacity-80 animate-bounce" />
+          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
         </div>
       </section>
 
-      {/* 2. Main Section: Left Sticky Sidebar + Right Scrolling Content */}
+      {/* 2. Main Section: Persistently Sticky Left Sidebar + Right Scrolling Content */}
       <section className="py-16 lg:py-24 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Grid Container without items-start so col-span-4 spans full height of right content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 relative">
-            
-            {/* LEFT COLUMN WRAPPER: Full height matching right column */}
+            {/* LEFT COLUMN WRAPPER */}
             <div className="lg:col-span-4 relative">
-              {/* INNER STICKY CONTAINER: Sticks at top-28 (below 80px header) while scrolling */}
+              {/* INNER STICKY CONTAINER */}
               <div className="lg:sticky lg:top-28 space-y-8 pb-8">
-                
-                {/* Service Quick Links */}
+                {/* Quick Navigation Items */}
                 <div className="bg-[#f8faf9] rounded-[10px] p-2 space-y-1 border border-gray-200/80 shadow-xs">
-                  <a
-                    href="#services"
-                    className="flex items-center justify-between px-5 py-4 text-sm font-extrabold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all"
-                  >
-                    <span>End-to-End Electronic Manufacturing</span>
-                    <span className="text-gray-400">›</span>
-                  </a>
-                  <a
-                    href="#services"
-                    className="flex items-center justify-between px-5 py-4 text-sm font-extrabold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all"
-                  >
-                    <span>Testing & Inspection</span>
-                    <span className="text-gray-400">›</span>
-                  </a>
-                  <a
-                    href="#services"
-                    className="flex items-center justify-between px-5 py-4 text-sm font-extrabold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all"
-                  >
-                    <span>Turnkey Project Delivery</span>
-                    <span className="text-gray-400">›</span>
-                  </a>
+                  {currentConfig.quickNav.map((item) => (
+                    <button
+                      key={item.key}
+                      onClick={() => onNavigateService && onNavigateService(item.key)}
+                      className="w-full flex items-center justify-between px-5 py-4 text-sm font-extrabold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-gray-400 font-bold">›</span>
+                    </button>
+                  ))}
                 </div>
 
-                {/* Get a Free Quote Box */}
+                {/* Get a Free Quote Form Box */}
                 <div className="bg-[#f8faf9] rounded-[10px] p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
                   <h3 className="text-xl font-extrabold text-[#0d3b2e] font-montserrat">
                     Get a Free Quote
@@ -154,17 +292,16 @@ export const ServicesPage = () => {
                     </a>
                   </div>
                 </div>
-
               </div>
             </div>
 
             {/* RIGHT COLUMN: SCROLLING CONTENT */}
             <div className="lg:col-span-8 space-y-12">
-              {/* Featured Image with Overlay */}
+              {/* Featured Banner Image */}
               <div className="relative rounded-[10px] overflow-hidden shadow-2xl group">
                 <img
-                  src="/hero-robotic-arm.png"
-                  alt="SMT and THT PCB Assembly Service"
+                  src={currentConfig.image}
+                  alt={currentConfig.title}
                   className="w-full h-[400px] sm:h-[480px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12 text-white">
@@ -172,90 +309,35 @@ export const ServicesPage = () => {
                     SERVICES —
                   </span>
                   <h2 className="text-3xl sm:text-4xl font-extrabold font-montserrat mb-3 leading-tight">
-                    SMT & THT PCB Assembly
+                    {currentConfig.title}
                   </h2>
                   <p className="text-gray-200 text-sm sm:text-base max-w-2xl leading-relaxed">
-                    High-precision surface mount and thru-hole PCB assembly for reliable electronic products.
+                    {currentConfig.heroSubtitle}
                   </p>
                 </div>
               </div>
 
-              {/* Description */}
+              {/* 2 Paragraph Description */}
               <div className="space-y-4 text-gray-700 text-base leading-relaxed">
-                <p>
-                  Our SMT and Thru-Hole PCB assembly services are designed to meet high accuracy, repeatability, and quality requirements. Alica&apos;s production lines are equipped to handle complex layouts, fine-pitch components, and mixed-technology assemblies.
-                </p>
+                <p>{currentConfig.p1}</p>
+                <p>{currentConfig.p2}</p>
               </div>
 
-              {/* Plan Benefits Checklist */}
+              {/* Benefits Checklist */}
               <div className="pt-8 border-t border-b border-gray-200 py-10 space-y-8">
                 <h3 className="text-3xl font-extrabold text-[#0d3b2e] font-montserrat">
-                  Plan Benefits
+                  {currentConfig.benefitsTitle}
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Precision assembly with minimal defects
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Component sizes from 01005 to large packages
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Consistent output across production runs
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      BGA, QFN, fine-pitch IC handling
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Support for prototypes and small batches
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Double-sided PCB assembly
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Advanced SMT line with inline inspection
-                    </span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      Leaded and lead-free processes
-                    </span>
-                  </div>
-
-                  <div className="sm:col-span-2 flex items-center space-x-3 pt-1">
-                    <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                    <span className="text-gray-800 font-semibold text-base">
-                      High placement accuracy and repeatability
-                    </span>
-                  </div>
+                  {currentConfig.benefits.map((benefit, idx) => (
+                    <div key={idx} className="flex items-center space-x-3">
+                      <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
+                      <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                        {benefit}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -266,7 +348,7 @@ export const ServicesPage = () => {
                 </h3>
 
                 <div className="space-y-4">
-                  {faqs.map((faq, index) => {
+                  {currentConfig.faqs.map((faq, index) => {
                     const isOpen = openFaq === index;
                     return (
                       <div
@@ -299,7 +381,6 @@ export const ServicesPage = () => {
                   })}
                 </div>
               </div>
-
             </div>
           </div>
         </div>
