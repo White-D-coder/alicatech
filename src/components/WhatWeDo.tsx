@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GenieWrapper } from './GenieWrapper';
 
 interface ServiceCardProps {
   id: number;
@@ -6,8 +7,10 @@ interface ServiceCardProps {
   line1: string;
   line2: string;
   title: string;
+  pageKey: string;
   isActive: boolean;
   onMouseEnter: () => void;
+  onClick: () => void;
 }
 
 const ServiceCard = ({
@@ -17,10 +20,12 @@ const ServiceCard = ({
   title,
   isActive,
   onMouseEnter,
+  onClick,
 }: ServiceCardProps) => {
   return (
     <div
       onMouseEnter={onMouseEnter}
+      onClick={onClick}
       className={`rounded-[10px] p-7 flex flex-col items-center justify-between text-center min-h-[260px] transition-all duration-300 cursor-pointer ${
         isActive
           ? 'bg-[#184441] text-white shadow-xl scale-[1.02]'
@@ -60,7 +65,11 @@ const ServiceCard = ({
   );
 };
 
-export const WhatWeDo = () => {
+interface WhatWeDoProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
   const [activeCard, setActiveCard] = useState<number>(3);
 
   const services = [
@@ -70,6 +79,7 @@ export const WhatWeDo = () => {
       line1: 'End-to-End Electronic',
       line2: 'Manufacturing',
       iconSrc: '/icon-1.svg',
+      pageKey: 'service-end-to-end',
     },
     {
       id: 2,
@@ -77,6 +87,7 @@ export const WhatWeDo = () => {
       line1: 'SMT & THT PCB',
       line2: 'Assembly',
       iconSrc: '/icon-2_1.svg',
+      pageKey: 'service-smt',
     },
     {
       id: 3,
@@ -84,6 +95,7 @@ export const WhatWeDo = () => {
       line1: 'Testing & Inspection',
       line2: '(AOI, X-Ray)',
       iconSrc: '/icon-3_1.svg',
+      pageKey: 'service-testing',
     },
     {
       id: 4,
@@ -91,35 +103,39 @@ export const WhatWeDo = () => {
       line1: 'Turnkey Project',
       line2: 'Delivery',
       iconSrc: '/icon-4.svg',
+      pageKey: 'service-turnkey',
     },
   ];
 
   return (
     <section id="services" className="py-20 lg:py-28 bg-white bg-grid-lines">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        {/* Section Header with Vanishing Genie Effect */}
+        <GenieWrapper direction="up" className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight font-montserrat">
             What We Do
           </h2>
           <p className="text-gray-600 text-base sm:text-lg font-normal">
             Reliable electronic manufacturing services tailored to your product needs
           </p>
-        </div>
+        </GenieWrapper>
 
-        {/* 4 Cards Grid - Semi-bold font weight, max 2 lines per title */}
+        {/* 4 Cards Grid - Framer Motion Vanishing Genie Effect */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              id={service.id}
-              title={service.title}
-              line1={service.line1}
-              line2={service.line2}
-              iconSrc={service.iconSrc}
-              isActive={activeCard === service.id}
-              onMouseEnter={() => setActiveCard(service.id)}
-            />
+          {services.map((service, index) => (
+            <GenieWrapper key={service.id} delay={index * 0.12} direction="up">
+              <ServiceCard
+                id={service.id}
+                title={service.title}
+                line1={service.line1}
+                line2={service.line2}
+                iconSrc={service.iconSrc}
+                pageKey={service.pageKey}
+                isActive={activeCard === service.id}
+                onMouseEnter={() => setActiveCard(service.id)}
+                onClick={() => onNavigate?.(service.pageKey)}
+              />
+            </GenieWrapper>
           ))}
         </div>
       </div>

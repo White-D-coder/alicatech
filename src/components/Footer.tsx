@@ -1,9 +1,21 @@
 import { Logo } from './Logo';
 import { Mail, MapPin, ChevronUp } from 'lucide-react';
 
-export const Footer = () => {
+interface FooterProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const Footer = ({ onNavigate }: FooterProps) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    } else {
+      scrollToTop();
+    }
   };
 
   return (
@@ -22,7 +34,9 @@ export const Footer = () => {
           {/* Column 1: Brand Info & Social Links */}
           <div className="md:col-span-5 space-y-6">
             <div>
-              <Logo color="#ffffff" height={44} />
+              <button onClick={() => handleLinkClick('home')} className="cursor-pointer">
+                <Logo color="#ffffff" height={44} />
+              </button>
             </div>
 
             <p className="text-emerald-100/80 text-sm leading-relaxed max-w-md font-normal">
@@ -126,24 +140,36 @@ export const Footer = () => {
 
             <ul className="space-y-3.5 text-sm text-emerald-100/80 font-normal">
               <li>
-                <a href="#services" className="hover:text-[#f4cf68] transition-colors">
+                <button
+                  onClick={() => handleLinkClick('service-smt')}
+                  className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
+                >
                   SMT & THT PCB Assembly
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#f4cf68] transition-colors">
+                <button
+                  onClick={() => handleLinkClick('service-testing')}
+                  className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
+                >
                   Testing & Inspection
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#f4cf68] transition-colors">
+                <button
+                  onClick={() => handleLinkClick('service-turnkey')}
+                  className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
+                >
                   Turnkey Project Delivery
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#f4cf68] transition-colors">
+                <button
+                  onClick={() => handleLinkClick('service-end-to-end')}
+                  className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
+                >
                   End-to-End Electronic Manufacturing
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -159,18 +185,18 @@ export const Footer = () => {
           </div>
 
           <div className="flex items-center space-x-6 sm:space-x-8">
-            <a href="#company" className="hover:text-white transition-colors">
+            <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
               Company
-            </a>
-            <a href="#careers" className="hover:text-white transition-colors">
+            </button>
+            <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
               Careers
-            </a>
-            <a href="#press" className="hover:text-white transition-colors">
+            </button>
+            <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
               Press media
-            </a>
-            <a href="#blog" className="hover:text-white transition-colors">
+            </button>
+            <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
               Our Blog
-            </a>
+            </button>
           </div>
         </div>
       </div>

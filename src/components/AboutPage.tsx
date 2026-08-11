@@ -39,7 +39,7 @@ export const AboutPage = () => {
             <div className="lg:col-span-6 space-y-3">
               <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="/PCB-Assembly-Ahmedabad.jpg"
+                  src="/media-library-download-1786351951/O1.jpg"
                   alt="Alica Technologies Global Headquarters Ahmedabad"
                   className="w-full h-auto object-cover"
                 />

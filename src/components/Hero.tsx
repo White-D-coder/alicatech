@@ -1,111 +1,92 @@
+import { motion } from 'framer-motion';
+
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-[calc(100vh-64px)] sm:min-h-[1000px] lg:min-h-[746px] flex items-center bg-[#062630] overflow-hidden group">
-      {/* Background Image: Tall centered robotic arm background image matching reference mobile view */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative bg-[#062b35] text-white pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32 overflow-visible">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="/Banner-Home.jpg"
-          alt="EMS Manufacturing Robotic Arm Banner"
-          className="w-full h-full object-cover object-center sm:object-top brightness-90 opacity-80"
+          alt="PCB Electronics Manufacturing Background"
+          className="w-full h-full object-cover object-top opacity-90 scale-100"
         />
-        {/* Dark Cyan/Teal Overlay matching reference site */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#062630]/85 via-[#062630]/70 to-[#062630]/90 md:bg-gradient-to-r md:from-[#062630]/90 md:via-[#062630]/65 md:to-transparent" /> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
       </div>
 
-      {/* Hero Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Side: Typography & Action Row */}
-          <div className="lg:col-span-7 text-white space-y-6">
-            {/* Title H1 */}
-            <h1 className="font-montserrat text-xl sm:text-5xl lg:text-[88px] font-extrabold tracking-tight leading-[1.08] text-white">
-              <span className="block">Your EMS</span>
-              <span className="relative inline-block mt-1">
-                <span>Partner</span>
+      {/* Main Content Area */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
+          {/* Subtitle Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 20, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center space-x-2"
+          >
+            <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#ffc82e] uppercase">
+              ELECTRONIC MANUFACTURING SERVICES
+            </span>
+          </motion.div>
 
-                {/* Animated Yellow Stroke SVG under Partner */}
-                <svg
-    className="absolute -bottom-3 -left-1 w-[108%] h-6 pointer-events-none z-0 overflow-visible"
-    viewBox="0 0 500 50"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-  >
-    <path
-      d="
-        M 4 30
-        C 35 22, 61 25, 92 21
-        C 123 17, 151 22, 183 18
-        C 214 15, 244 20, 276 16
-        C 307 13, 337 18, 369 14
-        C 402 11, 435 16, 468 12
-        C 480 10, 490 10, 497 8
-
-        L 498 20
-        C 484 22, 472 23, 458 23
-        C 426 26, 396 23, 365 27
-        C 333 30, 303 27, 272 31
-        C 240 34, 211 30, 180 34
-        C 149 37, 120 33, 90 38
-        C 61 42, 33 37, 8 43
-        C 4 41, 2 36, 4 30
-        Z
-      "
-      fill="#FFC82E"
-    />
-
-    {/* rough dry-brush texture */}
-    <path
-      d="M8 31 C70 22 125 27 185 20 C250 15 310 22 370 16 C420 12 462 17 496 10"
-      fill="none"
-      stroke="#FFC82E"
-      strokeWidth="4"
-      strokeLinecap="round"
-      opacity="0.9"
-    />
-
-    <path
-      d="M12 37 C70 30 125 34 190 27 C250 22 315 29 375 22 C425 19 465 22 492 17"
-      fill="none"
-      stroke="#FFC82E"
-      strokeWidth="3"
-      strokeLinecap="round"
-      opacity="0.75"
-    />
-  </svg>
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#ffffffb3] font-normal max-w-lg leading-relaxed pt-1">
-              Reliable manufacturing backed by proven processes.
-            </p>
-
-            {/* Action Row: Stacked on Mobile, horizontal on Desktop */}
-            <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
-              {/* View Services CTA Button */}
-              <a
-                href="#services"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-4 rounded-[6px] text-base shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none font-montserrat text-center"
+          {/* Main Title (40px Montserrat as requested) */}
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.88, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[40px] font-extrabold font-montserrat tracking-tight leading-[1.15] text-white drop-shadow-md"
+          >
+            Your EMS Partner For{' '}
+            <span className="relative inline-block text-white">
+              End-to-End
+              {/* Yellow Underline Stroke */}
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3 text-[#ffc82e]"
+                viewBox="0 0 200 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                View Services
-              </a>
+                <path
+                  d="M2 9C50 3 150 3 198 9"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  className="animate-yellow-stroke"
+                />
+              </svg>
+            </span>{' '}
+            Electronic Manufacturing
+          </motion.h1>
 
-              <div className="flex flex-col text-left pt-2 sm:pt-0">
-                <span className="text-xs text-gray-200 font-bold tracking-wider lowercase">
-                  get a quote
-                </span>
-                <a
-                  href="tel:+919727178787"
-                  className="text-xl sm:text-2xl font-extrabold text-[#ffc82e] hover:text-yellow-300 transition-colors font-montserrat tracking-tight"
-                >
-                  +91 97271 78787
-                </a>
-              </div>
-            </div>
-          </div>
+          {/* Description Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, scale: 0.9, y: 25, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base sm:text-lg text-gray-200 font-normal leading-relaxed max-w-2xl pt-1"
+          >
+            Alica Technologies LLP provides structured, reliable, and high-precision SMT & THT PCB assembly, testing, inspection, and turnkey manufacturing solutions across industries.
+          </motion.p>
 
-          {/* Right Side Spacer */}
-          <div className="hidden lg:block lg:col-span-5" />
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="pt-4 flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#services"
+              className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-sm tracking-wider uppercase shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+            >
+              Our Capabilities
+            </a>
+            <a
+              href="#about"
+              className="border-2 border-white/80 hover:border-white text-white hover:bg-white/10 font-bold px-8 py-3 rounded-[6px] text-sm tracking-wider uppercase transition-all"
+            >
+              Explore Services
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, MapPin, Mail, Phone, Check } from 'lucide-react';
+import { GenieWrapper } from './GenieWrapper';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -23,20 +24,20 @@ export const ContactPage = () => {
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Hero Banner */}
       <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
+        <GenieWrapper direction="down" className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
           <h1 className="text-4xl sm:text-6xl font-extrabold font-montserrat tracking-tight text-white">
             Contact Us
           </h1>
           <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
-        </div>
+        </GenieWrapper>
       </section>
 
       {/* 2. Main 2-Column Section */}
       <section className="py-20 lg:py-28 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
-            {/* Left Card: Get in Touch Box */}
-            <div className="lg:col-span-6 bg-white rounded-[2px] border border-gray-200/90 p-8 sm:p-12 shadow-xs space-y-8">
+            {/* Left Card: Get in Touch Box with Genie Effect */}
+            <GenieWrapper direction="left" className="lg:col-span-6 bg-white rounded-[10px] border border-gray-200/90 p-8 sm:p-12 shadow-xs space-y-8">
               <div className="space-y-3">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] font-montserrat tracking-tight">
                   Get in touch
@@ -47,7 +48,6 @@ export const ContactPage = () => {
               </div>
 
               <div className="space-y-6 pt-2 text-gray-700 text-sm sm:text-base">
-                {/* Location */}
                 <div className="flex items-start space-x-4">
                   <MapPin size={22} className="text-[#0d3b2e] shrink-0 mt-0.5" />
                   <p className="leading-snug">
@@ -57,7 +57,6 @@ export const ContactPage = () => {
                   </p>
                 </div>
 
-                {/* Email */}
                 <div className="flex items-center space-x-4">
                   <Mail size={22} className="text-[#0d3b2e] shrink-0" />
                   <a
@@ -68,7 +67,6 @@ export const ContactPage = () => {
                   </a>
                 </div>
 
-                {/* Phone */}
                 <div className="flex items-center space-x-4">
                   <Phone size={22} className="text-[#0d3b2e] shrink-0" />
                   <a
@@ -79,12 +77,12 @@ export const ContactPage = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </GenieWrapper>
 
-            {/* Right Column: Contact Form Box */}
-            <div className="lg:col-span-6">
+            {/* Right Column: Contact Form Box with Genie Effect */}
+            <GenieWrapper direction="right" delay={0.15} className="lg:col-span-6">
               {submitted ? (
-                <div className="bg-[#f8faf9] rounded-[2px] p-12 text-center space-y-4 border border-gray-200">
+                <div className="bg-[#f8faf9] rounded-[10px] p-12 text-center space-y-4 border border-gray-200">
                   <div className="w-16 h-16 bg-[#0d3b2e] text-[#ffc82e] rounded-full flex items-center justify-center mx-auto shadow-lg">
                     <Check size={36} strokeWidth={3} />
                   </div>
@@ -102,7 +100,7 @@ export const ContactPage = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[2px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all"
+                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[6px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all"
                     />
                   </div>
 
@@ -113,7 +111,7 @@ export const ContactPage = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[2px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all"
+                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[6px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all"
                     />
                   </div>
 
@@ -124,19 +122,19 @@ export const ContactPage = () => {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[2px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all resize-none"
+                      className="w-full bg-[#f8f6f3] border-0 px-5 py-4 rounded-[6px] text-sm text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-[#006828] focus:outline-none transition-all resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#ffc82e] hover: text-gray-950 font-extrabold py-4 rounded-[2px] text-white shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat tracking-wider"
+                    className="w-full bg-[#ffc82e] hover:bg-[#f5b918] text-gray-950 font-extrabold py-4 rounded-[6px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat uppercase tracking-wider cursor-pointer"
                   >
                     get in touch
                   </button>
                 </form>
               )}
-            </div>
+            </GenieWrapper>
           </div>
         </div>
       </section>

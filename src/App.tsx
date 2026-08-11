@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutUs } from './components/AboutUs';
@@ -67,7 +68,7 @@ function App() {
           <>
             <Hero />
             <AboutUs />
-            <WhatWeDo />
+            <WhatWeDo onNavigate={setCurrentPage} />
             <WhyChooseAlica />
             <LocationBanner />
             <Blogs />
@@ -80,10 +81,39 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#ffc82e] selection:text-black">
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="transition-opacity duration-300">
-        {renderPage()}
-      </main>
-      <Footer />
+      
+      {/* Page-level Vanishing Genie Motion Transition */}
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={currentPage}
+          initial={{
+            opacity: 0,
+            scale: 0.94,
+            y: 30,
+            filter: 'blur(8px)',
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            filter: 'blur(0px)',
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.92,
+            y: -30,
+            filter: 'blur(8px)',
+          }}
+          transition={{
+            duration: 0.55,
+            ease: [0.16, 1, 0.3, 1], // Vanishing Genie Ease
+          }}
+        >
+          {renderPage()}
+        </motion.main>
+      </AnimatePresence>
+
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }
