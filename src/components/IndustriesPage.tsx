@@ -1,5 +1,4 @@
 import { ChevronDown } from 'lucide-react';
-import { GenieWrapper } from './GenieWrapper';
 
 export const IndustriesPage = () => {
   const industries = [
@@ -55,7 +54,7 @@ export const IndustriesPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. Top Industrial Hero Banner with Genie Effect */}
+      {/* 1. Top Industrial Hero Banner */}
       <section className="relative bg-[#062630] text-white py-20 lg:py-28 overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
           <img
@@ -66,7 +65,7 @@ export const IndustriesPage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-orange-950/80 via-amber-950/60 to-black/70" />
         </div>
 
-        <GenieWrapper direction="up" className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h1 className="text-4xl sm:text-6xl font-extrabold text-white font-montserrat tracking-tight leading-tight">
             Industries we serve
           </h1>
@@ -77,36 +76,34 @@ export const IndustriesPage = () => {
           <div className="pt-6">
             <ChevronDown size={24} className="opacity-85 animate-bounce mx-auto text-white" />
           </div>
-        </GenieWrapper>
+        </div>
       </section>
 
-      {/* 2. 8 Industry Cards Grid with Staggered Vanishing Genie Animations */}
+      {/* 2. 8 Industry Cards Grid */}
       <section className="py-20 lg:py-28 bg-[#fcfdfe] bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {industries.map((item, index) => (
-              <GenieWrapper key={item.id} delay={index * 0.08} direction="up">
-                <div className="bg-white rounded-[10px] border border-gray-100 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
-                  <div className="space-y-4">
-                    <div className="relative aspect-16/10 overflow-hidden bg-gray-100 rounded-t-[10px]">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 rounded-t-[10px]"
-                      />
-                    </div>
+            {industries.map((item) => (
+              <div key={item.id} className="bg-white rounded-[10px] border border-gray-100 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full">
+                <div className="space-y-4">
+                  <div className="relative aspect-16/10 overflow-hidden bg-gray-100 rounded-t-[10px]">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 rounded-t-[10px]"
+                    />
+                  </div>
 
-                    <div className="p-6 space-y-2">
-                      <h3 className="text-xl font-bold text-[#0d3b2e] font-montserrat group-hover:text-[#006828] transition-colors leading-snug">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed font-normal">
-                        {item.description}
-                      </p>
-                    </div>
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-xl font-bold text-[#0d3b2e] font-montserrat group-hover:text-[#006828] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed font-normal">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
-              </GenieWrapper>
+              </div>
             ))}
           </div>
         </div>

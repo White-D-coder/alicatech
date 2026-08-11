@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 export const Hero = () => {
   return (
     <section className="relative bg-[#062b35] text-white pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32 overflow-visible">
@@ -16,31 +14,14 @@ export const Hero = () => {
       {/* Main Content Area */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
-          {/* Subtitle Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 20, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center space-x-2"
-          >
-            <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#ffc82e] uppercase">
-              ELECTRONIC MANUFACTURING SERVICES
-            </span>
-          </motion.div>
-
-          {/* Main Title (40px Montserrat as requested) */}
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.88, y: 30, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[40px] font-extrabold font-montserrat tracking-tight leading-[1.15] text-white drop-shadow-md"
-          >
-            Your EMS Partner For{' '}
+          {/* Main Title - Exact Match to Screenshot */}
+          <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-extrabold font-montserrat tracking-tight leading-[1.08] text-white drop-shadow-md">
+            Your EMS{' '}
             <span className="relative inline-block text-white">
-              End-to-End
-              {/* Yellow Underline Stroke */}
+              Partner
+              {/* Yellow Underline Stroke directly under Partner */}
               <svg
-                className="absolute -bottom-2 left-0 w-full h-3 text-[#ffc82e]"
+                className="absolute -bottom-2 left-0 w-full h-4 text-[#ffc82e]"
                 viewBox="0 0 200 12"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,45 +29,42 @@ export const Hero = () => {
                 <path
                   d="M2 9C50 3 150 3 198 9"
                   stroke="currentColor"
-                  strokeWidth="3.5"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   className="animate-yellow-stroke"
                 />
               </svg>
-            </span>{' '}
-            Electronic Manufacturing
-          </motion.h1>
+            </span>
+          </h1>
 
-          {/* Description Paragraph */}
-          <motion.p
-            initial={{ opacity: 0, scale: 0.9, y: 25, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg text-gray-200 font-normal leading-relaxed max-w-2xl pt-1"
-          >
-            Alica Technologies LLP provides structured, reliable, and high-precision SMT & THT PCB assembly, testing, inspection, and turnkey manufacturing solutions across industries.
-          </motion.p>
+          {/* Subtitle Paragraph */}
+          <p className="text-lg sm:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl pt-1">
+            Reliable manufacturing backed by proven processes.
+          </p>
 
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="pt-4 flex flex-wrap items-center gap-4"
-          >
+          {/* Action Buttons Row - Exact Match to Screenshot */}
+          <div className="pt-4 flex flex-wrap items-center gap-8">
+            {/* View Services Yellow Button */}
             <a
               href="#services"
-              className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-sm tracking-wider uppercase shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+              className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-base tracking-wide shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-montserrat"
             >
-              Our Capabilities
+              View Services
             </a>
-            <a
-              href="#about"
-              className="border-2 border-white/80 hover:border-white text-white hover:bg-white/10 font-bold px-8 py-3 rounded-[6px] text-sm tracking-wider uppercase transition-all"
-            >
-              Explore Services
-            </a>
-          </motion.div>
+
+            {/* Get a quote / Phone Number Text on Right */}
+            <div className="space-y-0.5">
+              <span className="text-xs text-gray-200 uppercase font-medium tracking-wider block">
+                get a quote
+              </span>
+              <a
+                href="tel:+919727178787"
+                className="text-lg sm:text-xl font-extrabold text-[#ffc82e] hover:text-white transition-colors font-montserrat tracking-tight block"
+              >
+                +91 97271 78787
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

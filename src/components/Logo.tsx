@@ -4,13 +4,13 @@ interface LogoProps {
   color?: string; // '#006828' or '#ffffff'
 }
 
-export const Logo = ({ className = '', height = 20, color = '#006828' }: LogoProps) => {
+export const Logo = ({ className = '', height = 44, color = '#006828' }: LogoProps) => {
   const isWhite = color === '#ffffff' || color === 'white';
 
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <img
-        src="/media-library-download-1786351951/Alica-green.svg"
+        src="/Alica-green.svg"
         alt="Alica Technologies LLP"
         style={{
           height: `${height}px`,

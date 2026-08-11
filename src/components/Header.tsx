@@ -53,6 +53,20 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
               }`}
             />
           </button>
+          {/* blogs */}
+          <button
+            onClick={() => handleNavClick('blogs')}
+            className={`relative py-2 text-[15px] font-semibold transition-colors duration-200 cursor-pointer ${
+              currentPage === 'blogs' ? 'text-[#006828] font-bold' : 'text-gray-800 hover:text-[#006828]'
+            }`}
+          >
+            Blogs
+            <span
+              className={`absolute bottom-0 left-0 h-0.5 bg-[#006828] transition-all duration-300 ${
+                currentPage === 'blogs' ? 'w-full' : 'w-0 hover:w-full'
+              }`}
+            />
+          </button>
 
           {/* About Us Link */}
           <button

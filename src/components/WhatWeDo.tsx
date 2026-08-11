@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { GenieWrapper } from './GenieWrapper';
 
 interface ServiceCardProps {
   id: number;
@@ -110,32 +109,31 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white bg-grid-lines">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Vanishing Genie Effect */}
-        <GenieWrapper direction="up" className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight font-montserrat">
             What We Do
           </h2>
           <p className="text-gray-600 text-base sm:text-lg font-normal">
             Reliable electronic manufacturing services tailored to your product needs
           </p>
-        </GenieWrapper>
+        </div>
 
-        {/* 4 Cards Grid - Framer Motion Vanishing Genie Effect */}
+        {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <GenieWrapper key={service.id} delay={index * 0.12} direction="up">
-              <ServiceCard
-                id={service.id}
-                title={service.title}
-                line1={service.line1}
-                line2={service.line2}
-                iconSrc={service.iconSrc}
-                pageKey={service.pageKey}
-                isActive={activeCard === service.id}
-                onMouseEnter={() => setActiveCard(service.id)}
-                onClick={() => onNavigate?.(service.pageKey)}
-              />
-            </GenieWrapper>
+          {services.map((service) => (
+            <ServiceCard
+              key={service.id}
+              id={service.id}
+              title={service.title}
+              line1={service.line1}
+              line2={service.line2}
+              iconSrc={service.iconSrc}
+              pageKey={service.pageKey}
+              isActive={activeCard === service.id}
+              onMouseEnter={() => setActiveCard(service.id)}
+              onClick={() => onNavigate?.(service.pageKey)}
+            />
           ))}
         </div>
       </div>

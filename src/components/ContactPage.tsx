@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ChevronDown, MapPin, Mail, Phone, Check } from 'lucide-react';
-import { GenieWrapper } from './GenieWrapper';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -24,20 +23,20 @@ export const ContactPage = () => {
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Hero Banner */}
       <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
-        <GenieWrapper direction="down" className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
           <h1 className="text-4xl sm:text-6xl font-extrabold font-montserrat tracking-tight text-white">
             Contact Us
           </h1>
           <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
-        </GenieWrapper>
+        </div>
       </section>
 
       {/* 2. Main 2-Column Section */}
       <section className="py-20 lg:py-28 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
-            {/* Left Card: Get in Touch Box with Genie Effect */}
-            <GenieWrapper direction="left" className="lg:col-span-6 bg-white rounded-[10px] border border-gray-200/90 p-8 sm:p-12 shadow-xs space-y-8">
+            {/* Left Card: Get in Touch Box */}
+            <div className="lg:col-span-6 bg-white rounded-[10px] border border-gray-200/90 p-8 sm:p-12 shadow-xs space-y-8">
               <div className="space-y-3">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] font-montserrat tracking-tight">
                   Get in touch
@@ -77,10 +76,10 @@ export const ContactPage = () => {
                   </a>
                 </div>
               </div>
-            </GenieWrapper>
+            </div>
 
-            {/* Right Column: Contact Form Box with Genie Effect */}
-            <GenieWrapper direction="right" delay={0.15} className="lg:col-span-6">
+            {/* Right Column: Contact Form Box */}
+            <div className="lg:col-span-6">
               {submitted ? (
                 <div className="bg-[#f8faf9] rounded-[10px] p-12 text-center space-y-4 border border-gray-200">
                   <div className="w-16 h-16 bg-[#0d3b2e] text-[#ffc82e] rounded-full flex items-center justify-center mx-auto shadow-lg">
@@ -134,7 +133,7 @@ export const ContactPage = () => {
                   </button>
                 </form>
               )}
-            </GenieWrapper>
+            </div>
           </div>
         </div>
       </section>
