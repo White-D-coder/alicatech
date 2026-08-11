@@ -54,43 +54,43 @@ export const WhyChooseAlica = () => {
 
             {/* Checklist */}
             <div className="space-y-4 pt-2">
-  {differentiators.map((item, index) => (
-    <div
-      key={index}
-      className="group flex items-center space-x-4 cursor-pointer transition-all duration-300 ease-out hover:translate-x-2"
-    >
-      {/* Check Icon */}
-      <div
-        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0
+              {differentiators.map((item, index) => (
+                <div
+                  key={index}
+                  className="group flex items-center space-x-4 cursor-pointer transition-all duration-300 ease-out hover:translate-x-2"
+                >
+                  <div
+                    className="
+          w-7 h-7 rounded-full
+          flex items-center justify-center shrink-0
+          bg-[#eaf1f1] text-[#0d3b2e]
           transition-all duration-300 ease-out
-          group-hover:scale-110 group-hover:rotate-[8deg]
-          ${
-            item.highlighted
-              ? 'bg-[#0d3b2e] text-white shadow-md group-hover:shadow-lg'
-              : 'bg-[#eaf1f1] text-[#0d3b2e] group-hover:bg-[#0d3b2e] group-hover:text-white'
-          }`}
-      >
-        <Check
-          size={16}
-          strokeWidth={item.highlighted ? 3 : 2.5}
-          className="transition-transform duration-300 group-hover:scale-110"
-        />
-      </div>
+          group-hover:bg-[#0d3b2e]
+          group-hover:text-white
+          group-hover:scale-110
+          group-hover:rotate-[8deg]
+          group-hover:shadow-md
+        "
+                  >
+                    <Check
+                      size={16}
+                      strokeWidth={2.5}
+                      className="transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
 
-      {/* Text */}
-      <span
-        className={`text-base font-semibold transition-all duration-300 ease-out
-          ${
-            item.highlighted
-              ? 'text-[#0d3b2e] font-bold group-hover:text-[#164b3a]'
-              : 'text-gray-700 group-hover:text-[#0d3b2e]'
-          }`}
-      >
-        {item.title}
-      </span>
-    </div>
-  ))}
-</div>
+                  <span
+                    className="
+          text-base font-semibold text-gray-700
+          transition-colors duration-300
+          group-hover:text-[#0d3b2e]
+        "
+                  >
+                    {item.title}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
