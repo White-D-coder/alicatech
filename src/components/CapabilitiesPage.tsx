@@ -16,7 +16,6 @@ export const CapabilitiesPage = () => {
 
           {/* Centered Image overlapping with top text */}
           <div className="group relative z-10 -mt-8 sm:-mt-12 lg:-mt-16 rounded-[4px] overflow-hidden shadow-2xl max-w-5xl mx-auto border border-gray-100 cursor-pointer">
-
   <img
     src="/37264.jpg"
     alt="Alica Technologies Manufacturing Robotic Line"
@@ -27,13 +26,14 @@ export const CapabilitiesPage = () => {
     "
   />
 
-  {/* Dark hover overlay */}
+  {/* Subtle dark overlay */}
   <div
     className="
       absolute inset-0
       bg-[#0d3b2e]/0
       group-hover:bg-[#0d3b2e]/10
       transition-all duration-500
+      pointer-events-none
     "
   />
 
@@ -60,11 +60,11 @@ export const CapabilitiesPage = () => {
       <section className="py-20 lg:py-24 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           {/* Reliable Execution Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block">
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase font-montserrat">
                 Reliable Execution
               </span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-4">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-snug">
                 Precision, consistency, and reliability.
               </h2>
@@ -96,34 +96,46 @@ export const CapabilitiesPage = () => {
               </div>
             </div>
 
-            {/* Right Text */}
+            {/* Right Text with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="inline-block bg-[#e8eff1] text-[#0d3b2e] text-[11px] font-bold tracking-widest uppercase px-3.5 py-1 rounded-full">
+              <span className="inline-block bg-[#e8eff1] text-[#0d3b2e] text-[11px] font-bold tracking-widest uppercase px-3.5 py-1 rounded-full font-montserrat">
                 SURFACE MOUNT & THRU-HOLE ASSEMBLY
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-tight">
-                PCB Assembly{' '}
-                <span className="bg-[#e2ebf8] px-2 py-0.5 rounded-xs">
-                  Capabilities
-                </span>
+                PCB Assembly Capabilities
               </h2>
 
               <p className="text-gray-600 text-base leading-relaxed">
                 Our production lines support SMT, THT, and mixed-technology PCB assemblies with high placement accuracy and controlled soldering processes.
               </p>
 
-              <div className="space-y-3 pt-2">
-                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase">
+              <div className="space-y-4 pt-2">
+                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase font-montserrat">
                   Assembly Capabilities Include:
                 </h4>
-                <ul className="space-y-2 text-gray-700 text-sm font-medium leading-relaxed">
-                  <li>– SMT & Thru-Hole PCB assembly</li>
-                  <li>– Single-sided and double-sided boards</li>
-                  <li>– Mixed-technology builds</li>
-                  <li>– Leaded and lead-free processes</li>
-                  <li>– Prototype to low/medium volume production</li>
-                </ul>
+
+                <div className="space-y-2.5">
+                  {[
+                    'SMT & Thru-Hole PCB assembly',
+                    'Single-sided and double-sided boards',
+                    'Mixed-technology builds',
+                    'Leaded and lead-free processes',
+                    'Prototype to low/medium volume production',
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group flex items-center space-x-3 cursor-pointer py-1 transition-all duration-300 ease-out hover:translate-x-2"
+                    >
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-[#eaf1f1] text-[#0d3b2e] transition-all duration-300 ease-out group-hover:bg-[#0d3b2e] group-hover:text-[#ffc82e] group-hover:scale-110 group-hover:rotate-[8deg] group-hover:shadow-md">
+                        <Check size={14} strokeWidth={2.5} className="transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                      <span className="text-gray-700 font-semibold text-sm sm:text-base transition-colors duration-300 group-hover:text-[#0d3b2e]">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -164,7 +176,7 @@ export const CapabilitiesPage = () => {
       <section className="bg-[#fafafa] py-20 lg:py-24 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
+            {/* Left Content with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-tight">
                 Component Handling Capabilities
@@ -174,21 +186,36 @@ export const CapabilitiesPage = () => {
                 Our SMT lines are equipped to handle a wide range of components with high repeatability and accuracy.
               </p>
 
-              <div className="space-y-3 pt-2">
-                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase">
+              <div className="space-y-4 pt-2">
+                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase font-montserrat">
                   Component Handling Range:
                 </h4>
-                <ul className="space-y-2 text-gray-700 text-sm font-medium leading-relaxed">
-                  <li>– 01005 package components</li>
-                  <li>– BGA, QFN, CSP and fine-pitch ICs</li>
-                  <li>– High-density PCB layouts</li>
-                  <li>– Odd-form and specialty components</li>
-                  <li>– Large ICs and multi-layer boards</li>
-                </ul>
+
+                <div className="space-y-2.5">
+                  {[
+                    '01005 package components',
+                    'BGA, QFN, CSP and fine-pitch ICs',
+                    'High-density PCB layouts',
+                    'Odd-form and specialty components',
+                    'Large ICs and multi-layer boards',
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group flex items-center space-x-3 cursor-pointer py-1 transition-all duration-300 ease-out hover:translate-x-2"
+                    >
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-[#eaf1f1] text-[#0d3b2e] transition-all duration-300 ease-out group-hover:bg-[#0d3b2e] group-hover:text-[#ffc82e] group-hover:scale-110 group-hover:rotate-[8deg] group-hover:shadow-md">
+                        <Check size={14} strokeWidth={2.5} className="transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                      <span className="text-gray-700 font-semibold text-sm sm:text-base transition-colors duration-300 group-hover:text-[#0d3b2e]">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right Image: Touchscreen Interface */}
+            {/* Right Image: Component Inspection */}
             <div className="lg:col-span-6">
               <div className="rounded-[8px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
@@ -217,46 +244,39 @@ export const CapabilitiesPage = () => {
               </div>
             </div>
 
-            {/* Right Text */}
+            {/* Right Text with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block">
-                ADVANCED INSPECTION SYSTEMS
-              </span>
-
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-tight">
                 Inspection & Quality Capabilities
               </h2>
 
               <p className="text-gray-600 text-base leading-relaxed">
-                Inspection is integrated at critical stages of our manufacturing workflow to ensure early defect detection and consistent quality output.
+                Quality control is integrated into every stage of assembly using advanced inline inspection systems.
               </p>
 
               <div className="space-y-4 pt-2">
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-[#3b6932] text-white flex items-center justify-center shrink-0">
-                    <Check size={15} strokeWidth={3} />
-                  </div>
-                  <span className="text-gray-800 font-medium text-base">
-                    3D Solder Paste Inspection (SPI)
-                  </span>
-                </div>
+                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase font-montserrat">
+                  Inspection Systems:
+                </h4>
 
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-[#3b6932] text-white flex items-center justify-center shrink-0">
-                    <Check size={15} strokeWidth={3} />
-                  </div>
-                  <span className="text-gray-800 font-medium text-base">
-                    Automated Optical Inspection (AOI) – 3D / 4D
-                  </span>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-[#3b6932] text-white flex items-center justify-center shrink-0">
-                    <Check size={15} strokeWidth={3} />
-                  </div>
-                  <span className="text-gray-800 font-medium text-base">
-                    2.5D & 3D X-Ray Inspection
-                  </span>
+                <div className="space-y-2.5">
+                  {[
+                    '3D Solder Paste Inspection (SPI)',
+                    'Automated Optical Inspection (AOI) – 3D / 4D',
+                    '2.5D & 3D X-Ray Inspection',
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group flex items-center space-x-3 cursor-pointer py-1 transition-all duration-300 ease-out hover:translate-x-2"
+                    >
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-[#eaf1f1] text-[#0d3b2e] transition-all duration-300 ease-out group-hover:bg-[#0d3b2e] group-hover:text-[#ffc82e] group-hover:scale-110 group-hover:rotate-[8deg] group-hover:shadow-md">
+                        <Check size={14} strokeWidth={2.5} className="transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                      <span className="text-gray-700 font-semibold text-sm sm:text-base transition-colors duration-300 group-hover:text-[#0d3b2e]">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -268,35 +288,50 @@ export const CapabilitiesPage = () => {
       <section className="bg-[#fafafa] py-20 lg:py-24 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
+            {/* Left Text with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-tight">
                 Testing Capabilities
               </h2>
 
               <p className="text-gray-600 text-base leading-relaxed">
-                We provide testing services tailored to project-specific requirements to ensure assembled boards meet defined electrical and functional standards.
+                Functional and electrical testing options to verify assembly performance before final dispatch.
               </p>
 
-              <div className="space-y-3 pt-2">
-                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase">
-                  Testing Capabilities:
+              <div className="space-y-4 pt-2">
+                <h4 className="text-sm font-bold text-[#0d3b2e] tracking-wider uppercase font-montserrat">
+                  Testing Services:
                 </h4>
-                <ul className="space-y-2 text-gray-700 text-sm font-medium leading-relaxed">
-                  <li>– Functional testing</li>
-                  <li>– Voltage and impedance testing</li>
-                  <li>– Custom testing setups (as required)</li>
-                  <li>– Final verification before dispatch</li>
-                </ul>
+
+                <div className="space-y-2.5">
+                  {[
+                    'Functional testing',
+                    'Voltage and impedance testing',
+                    'Custom testing setups (as required)',
+                    'Final verification before dispatch',
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group flex items-center space-x-3 cursor-pointer py-1 transition-all duration-300 ease-out hover:translate-x-2"
+                    >
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-[#eaf1f1] text-[#0d3b2e] transition-all duration-300 ease-out group-hover:bg-[#0d3b2e] group-hover:text-[#ffc82e] group-hover:scale-110 group-hover:rotate-[8deg] group-hover:shadow-md">
+                        <Check size={14} strokeWidth={2.5} className="transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                      <span className="text-gray-700 font-semibold text-sm sm:text-base transition-colors duration-300 group-hover:text-[#0d3b2e]">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right Image: Touchscreen Display */}
+            {/* Right Image: Electronics Testing Setup */}
             <div className="lg:col-span-6">
               <div className="rounded-[8px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="/37239.jpg"
-                  alt="Testing Capabilities Inspection Display"
+                  src="/2151575719.jpg"
+                  alt="Alica Electronics Testing Setup"
                   className="w-full h-auto object-cover"
                 />
               </div>
