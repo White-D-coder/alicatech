@@ -9,6 +9,7 @@ interface ServiceCardProps {
   pageKey: string;
   isActive: boolean;
   onMouseEnter: () => void;
+  onMouseLeave: () => void;
   onClick: () => void;
 }
 
@@ -19,11 +20,13 @@ const ServiceCard = ({
   title,
   isActive,
   onMouseEnter,
+  onMouseLeave,
   onClick,
 }: ServiceCardProps) => {
   return (
     <div
       onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       onClick={onClick}
       className={`rounded-[10px] p-7 flex flex-col items-center justify-between text-center min-h-[260px] transition-all duration-300 cursor-pointer ${
         isActive
@@ -69,7 +72,7 @@ interface WhatWeDoProps {
 }
 
 export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
-  const [activeCard, setActiveCard] = useState<number>(3);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const services = [
     {
@@ -107,10 +110,10 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
   ];
 
   return (
-    <section id="services" className="py-20 lg:py-28 bg-white bg-grid-lines">
+    <section id="services" className="py-12 lg:py-16 bg-white bg-grid-lines">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight font-montserrat">
             What We Do
           </h2>
@@ -119,7 +122,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
+        {/* 4 Cards Grid - Hover state resets to white when mouse leaves */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
             <ServiceCard
@@ -132,6 +135,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
               pageKey={service.pageKey}
               isActive={activeCard === service.id}
               onMouseEnter={() => setActiveCard(service.id)}
+              onMouseLeave={() => setActiveCard(null)}
               onClick={() => onNavigate?.(service.pageKey)}
             />
           ))}
