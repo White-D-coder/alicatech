@@ -14,15 +14,14 @@ export const Hero = () => {
       {/* Main Content Area */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
-          {/* Main Title - Exact Match to Screenshot */}
-          <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-extrabold font-montserrat tracking-tight leading-[1.08] text-white drop-shadow-md">
-            <span>Your EMS</span>
-            <br />
-            <span className="relative inline-block text-white">
+          {/* Main Title - Partner on its own line directly under Your EMS */}
+          <h1 className="text-5xl sm:text-6xl lg:text-[68px] font-extrabold font-montserrat tracking-tight leading-[1.1] text-white drop-shadow-md">
+            <span className="block">Your EMS</span>
+            <span className="relative inline-block text-white mt-1">
               Partner
               {/* Yellow Underline Stroke directly under Partner */}
               <svg
-                className="absolute -bottom-2 left-0 w-full h-4 text-[#ffc82e]"
+                className="absolute -bottom-2.5 left-0 w-full h-4 text-[#ffc82e]"
                 viewBox="0 0 200 12"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +42,7 @@ export const Hero = () => {
             Reliable manufacturing backed by proven processes.
           </p>
 
-          {/* Action Buttons Row - Exact Match to Screenshot */}
+          {/* Action Buttons Row */}
           <div className="pt-4 flex flex-wrap items-center gap-8">
             {/* View Services Yellow Button */}
             <a

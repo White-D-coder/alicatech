@@ -2,7 +2,7 @@ import { EnquiryForm } from './EnquiryForm';
 
 export const AboutUs = () => {
   return (
-    <section id="about-us" className="relative bg-[#fbfcfc] pb-20 lg:pb-28 bg-grid-lines border-b border-gray-100 overflow-visible">
+    <section id="about-us" className="relative bg-[#ffffff] pb-10 lg:pb-25 bg-grid-lines overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* Left Column Content */}
