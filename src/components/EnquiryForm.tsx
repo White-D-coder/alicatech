@@ -26,9 +26,9 @@ export const EnquiryForm = () => {
   };
 
   return (
-    <div className="bg-white rounded-[5px] shadow-2xl pt-[30px] px-[50px] pb-[50px] border border-gray-200/80 w-full max-w-[499px] transition-all duration-300">
+    <div className="bg-white rounded-[5px] shadow-2xl pt-[30px] px-[20px] pb-[50px] border border-gray-200/80 w-full max-w-[600px] transition-all duration-300">
       {submitted ? (
-        <div className="py-12 text-center space-y-6">
+        <div className="py-12 space-y-6">
           <div className="w-16 h-16 bg-[#0d3b2e] text-[#ffc82e] rounded-[10px] flex items-center justify-center mx-auto shadow-lg">
             <Check size={36} strokeWidth={3} />
           </div>
@@ -41,7 +41,7 @@ export const EnquiryForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Header */}
           <div className="mb-8">
-            <span className="text-[#0d3b2e] text-sm sm:text-base font-bold tracking-wider block mb-4">
+            <span className="text-[#0d3b2e] text-sm sm:text-base font-bold block mb-8">
               Send A Message
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#0d3b2e] tracking-tight font-montserrat">

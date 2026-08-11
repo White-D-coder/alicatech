@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section className="relative bg-[#062b35] text-white pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-35 lg:pb-32 overflow-visible">
+    <section className="relative bg-[#062b35] text-white pt-25 pb-16 sm:pt-16 sm:pb-24 lg:pt-35 lg:pb-32 overflow-visible">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -13,7 +13,7 @@ export const Hero = () => {
 
       {/* Main Content Area */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
+        <div className="max-w-3xl space-y-6 pt-12 pb-12 sm:pb-16 lg:pb-20">
           {/* Main Title - Partner on its own line directly under Your EMS */}
           <h1 className="text-5xl sm:text-6xl lg:text-[68px] font-bold font-montserrat tracking-tight leading-[1.1] text-white drop-shadow-md">
             <span className="block">Your EMS</span>

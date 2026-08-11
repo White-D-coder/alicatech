@@ -21,85 +21,89 @@ export const AboutPage = () => {
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Banner - Safe Top Padding for Sticky Header */}
       <section
-  className="text-white pt-28 sm:pt-36 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
-  style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
->
-  <div className="flex-1 flex items-center justify-center relative z-10">
-    <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
-      About
-    </h1>
-  </div>
+        className="text-white pt-28 sm:pt-36 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
+      >
+        <div className="flex-1 flex items-center justify-center relative z-10">
+          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
+            About
+          </h1>
+        </div>
 
-  <div className="pb-2 relative z-10">
-    <ChevronDown
-      size={22}
-      className="opacity-80 animate-bounce text-white"
-    />
-  </div>
-</section>
-
-      {/* 2. Arch Philosophy & Headquarters Section */}
-      <section className="py-16 lg:py-20 bg-white bg-grid-lines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Image: Global Headquarters */}
-            <div className="lg:col-span-6 space-y-3">
-              <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
-                <img
-                  src="/media-library-download-1786351951/O1.jpg"
-                  alt="Alica Technologies Global Headquarters Ahmedabad"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <p className="text-sm font-bold text-[#0d3b2e] pt-1">
-                Global Headquarters (Ahmedabad, Gujarat)
-              </p>
-            </div>
-
-            {/* Right Text Content */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider block font-montserrat uppercase">
-                Arch Philosophy
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
-  About{' '}
-  <span className="relative inline-block">
-    <span className="relative z-10">Alica Technologies</span>
-    <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
-  </span>
-</h2>
-
-              <p className="text-gray-700 font-medium text-base sm:text-lg leading-relaxed">
-                A pure Electronic Manufacturing Services (EMS) company focused on precision, quality, and reliable execution.
-              </p>
-
-              <div className="space-y-4 text-gray-600 text-base leading-relaxed font-normal">
-                <p>
-                  Alica Technologies LLP is a dedicated Electronic Manufacturing Services (EMS) company specializing in PCB assembly, testing, inspection, and turnkey project delivery. We are committed to providing structured, process-driven manufacturing solutions that meet defined technical and quality standards.
-                </p>
-                <p>
-                  Our focus is on building long-term partnerships by delivering consistent results, transparent communication, and dependable manufacturing support.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="pb-2 relative z-10">
+          <ChevronDown
+            size={22}
+            className="opacity-80 animate-bounce text-white"
+          />
         </div>
       </section>
 
+      {/* 2. Arch Philosophy & Headquarters Section */}
+      <section className="py-16 lg:py-20 bg-white bg-grid-lines">
+  <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+    <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      {/* Left Image: Global Headquarters */}
+      <div className="lg:col-span-6 space-y-3">
+        <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
+          <img
+            src="/media-library-download-1786351951/O1.jpg"
+            alt="Alica Technologies Global Headquarters Ahmedabad"
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
+        <p className="text-sm font-bold text-[#0d3b2e] pt-1">
+          Global Headquarters (Ahmedabad, Gujarat)
+        </p>
+      </div>
+
+      {/* Right Text Content */}
+      <div className="lg:col-span-6 space-y-6">
+        <span className="text-s font-bold text-[#0d3b2e] block font-montserrat">
+          Arch Philosophy
+        </span>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
+          About{' '}
+          <span className="relative inline-block">
+            <span className="relative z-10">Alica Technologies</span>
+            <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
+          </span>
+        </h2>
+
+        <p className="text-gray-700 font-medium text-base sm:text-lg leading-relaxed">
+          A pure Electronic Manufacturing Services (EMS) company focused on precision, quality, and reliable execution.
+        </p>
+
+        <div className="space-y-4 text-gray-600 text-base leading-relaxed font-normal">
+          <p>
+            Alica Technologies LLP is a dedicated Electronic Manufacturing Services (EMS) company specializing in PCB assembly, testing, inspection, and turnkey project delivery. We are committed to providing structured, process-driven manufacturing solutions that meet defined technical and quality standards.
+          </p>
+
+          <p>
+            Our focus is on building long-term partnerships by delivering consistent results, transparent communication, and dependable manufacturing support.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
       {/* 3. Our Approach Section */}
-      <section className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
+      <section className="py-5 lg:py-20 bg-[#ffffff] bg-grid-lines">
+        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-6 sm:mb-12">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
-  Our{' '}
-  <span className="relative inline-block">
-    <span className="relative z-10">Approach</span>
-    <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
-  </span>
-</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
+                Our{' '}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Approach</span>
+                  <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
+                </span>
+              </h2>
 
               <p className="text-gray-700 text-base font-medium leading-relaxed">
                 At Alica Technologies, quality is integrated into every stage of manufacturing.
@@ -122,8 +126,67 @@ export const AboutPage = () => {
             </div>
           </div>
 
-          {/* 3 Steps Bar */}
-          <div className="bg-white rounded-full border border-gray-200 shadow-md p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-4xl mx-auto transform hover:scale-[1.01] transition-transform duration-300">
+          {/* 3 Steps Bar - Mobile Marquee View */}
+          <div className="block sm:hidden overflow-hidden max-w-4xl mx-auto">
+            <div className="animate-marquee flex items-center space-x-6 whitespace-nowrap">
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  1
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  MAKE AN APPOINTMENT
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  2
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  BUSINESS CONSULTATION
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  3
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  BUSINESS ANALYTICS
+                </span>
+              </div>
+
+              {/* Duplicate set for continuous seamless marquee loop */}
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  1
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  MAKE AN APPOINTMENT
+                </span>
+              </div>
+              <span className="text-gray-300 font-light">|</span>
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  2
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  BUSINESS CONSULTATION
+                </span>
+              </div>
+              <span className="text-gray-300 font-light">|</span>
+              <div className="flex items-center space-x-3 shrink-0">
+                <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
+                  3
+                </div>
+                <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                  BUSINESS ANALYTICS
+                </span>
+              </div>
+              <span className="text-gray-300 font-light">|</span>
+            </div>
+          </div>
+
+          {/* 3 Steps Bar - Desktop Grid View */}
+          <div className="hidden sm:grid sm:grid-cols-3 bg-white shadow-md p-4 sm:p-6 gap-6 text-center max-w-4xl mx-auto rounded-full border border-gray-200 transform hover:scale-[1.01] transition-transform duration-300">
             <div className="flex items-center justify-center space-x-3 group">
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 1
@@ -219,12 +282,12 @@ export const AboutPage = () => {
 
       {/* 5. Business Partners Section */}
       <section className="py-16 lg:py-20 bg-white bg-grid-lines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block font-montserrat">
-              A deep commitment to diversity
+        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto mb-4 space-y-6">
+            <span className="text-s font-bold text-[#0d3b2e] inline-block font-montserrat">
+              A Deep Commitment to Diversity
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat">
               Business Partners
             </h2>
           </div>

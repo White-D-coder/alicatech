@@ -28,24 +28,24 @@ const ServiceCard = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      className={`rounded-[10px] p-7 flex flex-col items-center justify-between text-center min-h-[260px] transition-all duration-300 cursor-pointer ${
+      className={`rounded-[10px] p-4 sm:p-7 flex flex-col items-center justify-between text-center min-h-[200px] sm:min-h-[260px] transition-all duration-300 cursor-pointer ${
         isActive
           ? 'bg-[#184441] text-white shadow-xl scale-[1.02]'
           : 'bg-[#f8faf9] text-[#0d3b2e] hover:bg-[#184441] hover:text-white group'
       }`}
     >
-      <div className="flex-1 flex flex-col items-center justify-center space-y-5">
-        <div className="p-2 transition-colors flex items-center justify-center">
+      <div className="flex-1 flex flex-col items-center justify-center space-y-3 sm:space-y-5">
+        <div className="p-1 sm:p-2 transition-colors flex items-center justify-center">
           <img
             src={iconSrc}
             alt={title}
-            className={`w-11 h-11 object-contain transition-all ${
+            className={`w-9 h-9 sm:w-11 sm:h-11 object-contain transition-all ${
               isActive ? 'brightness-0 invert' : 'group-hover:brightness-0 group-hover:invert'
             }`}
           />
         </div>
         <h3
-          className={`text-base sm:text-lg font-semibold leading-snug px-1 font-montserrat ${
+          className={`text-xs sm:text-lg font-semibold leading-snug px-0.5 font-montserrat ${
             isActive ? 'text-white' : 'text-[#0d3b2e] group-hover:text-[#ffc82e]'
           }`}
         >
@@ -56,12 +56,12 @@ const ServiceCard = ({
 
       {/* Learn more arrow link */}
       <div
-        className={`pt-3 flex items-center justify-center gap-1.5 text-xs font-semibold transition-opacity duration-200 ${
+        className={`pt-2 sm:pt-3 flex items-center justify-center gap-1.5 text-[11px] sm:text-xs font-semibold transition-opacity duration-200 ${
           isActive ? 'opacity-100 text-white' : 'opacity-0 group-hover:opacity-100 text-[#ffc82e]'
         }`}
       >
         <span>Learn more</span>
-        <span className="text-sm">→</span>
+        <span className="text-xs sm:text-sm">→</span>
       </div>
     </div>
   );
@@ -111,9 +111,9 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
 
   return (
     <section id="services" className="bg-white bg-grid-lines">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="pt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="max-w-3xl mx-auto mb-8 sm:mb-12 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat">
             What We Do
           </h2>
@@ -122,8 +122,8 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
           </p>
         </div>
 
-        {/* 4 Cards Grid - Hover state resets to white when mouse leaves */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Cards Grid - 2x2 on phone view matching img2 */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {services.map((service) => (
             <ServiceCard
               key={service.id}

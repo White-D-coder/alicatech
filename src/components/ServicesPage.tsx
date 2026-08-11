@@ -204,11 +204,10 @@ export const ServicesPage = ({
         </div>
       </section>
 
-      {/* 2. Main Section: Persistently Sticky Left Sidebar + Right Scrolling Content */}
-      {/* 2. Main Section: Sticky Left + Scrolling Right */}
-<section className="py-16 lg:py-24 bg-white bg-grid-lines">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+      {/* 2. Main Section: Main Content first on mobile view, Left Sidebar after FAQ section on mobile view */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-white bg-grid-lines">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
 
       {/* LEFT COLUMN — STICKY */}
       <div className="lg:col-span-4 lg:self-start">
@@ -307,9 +306,9 @@ export const ServicesPage = ({
 
               <a
                 href="tel:+919727178787"
-                className="text-lg font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
+                className="text-m font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
               >
-                +91 97271 78787
+                +91 9727178787
               </a>
             </div>
           </div>

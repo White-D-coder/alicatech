@@ -21,7 +21,7 @@ export const WhyChooseAlica = () => {
   ];
 
   return (
-    <section id="capabilities" className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
+    <section id="capabilities" className="py-18 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column Image */}
@@ -39,7 +39,7 @@ export const WhyChooseAlica = () => {
           {/* Right Column Differentiators Text & Checklist */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-widest block font-montserrat mb-3">
+              <span className="text-s font-bold text-[#0d3b2e] block font-montserrat mb-3">
                 Differentiators
               </span>
 
