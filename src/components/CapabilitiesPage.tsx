@@ -135,7 +135,7 @@ export const CapabilitiesPage = () => {
                 1
               </div>
               <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
-                MAKE AN APPOINTMENT
+                PCB Preparation
               </span>
             </div>
 
@@ -144,7 +144,7 @@ export const CapabilitiesPage = () => {
                 2
               </div>
               <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
-                BUSINESS CONSULTATION
+                Component Placement
               </span>
             </div>
 
@@ -153,7 +153,7 @@ export const CapabilitiesPage = () => {
                 3
               </div>
               <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
-                BUSINESS ANALYTICS
+                Reflow & Inspection
               </span>
             </div>
           </div>

@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section className="relative bg-[#062b35] text-white pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32 overflow-visible">
+    <section className="relative bg-[#062b35] text-white pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-35 lg:pb-32 overflow-visible">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img

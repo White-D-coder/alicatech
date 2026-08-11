@@ -21,7 +21,7 @@ export const AboutPage = () => {
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Banner - Safe Top Padding for Sticky Header */}
       <section
-  className="text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden bg-cover bg-center"
+  className="text-white pt-28 sm:pt-36 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
   style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
 >
   <div className="flex-1 flex items-center justify-center relative z-10">

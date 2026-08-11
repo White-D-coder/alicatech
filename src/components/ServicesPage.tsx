@@ -329,9 +329,6 @@ export const ServicesPage = ({
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12 text-white">
-            <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2">
-              SERVICES —
-            </span>
 
             <h2 className="text-3xl sm:text-4xl font-bold font-montserrat mb-3 leading-tight">
               {currentConfig.title}
