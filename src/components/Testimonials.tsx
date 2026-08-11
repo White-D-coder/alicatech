@@ -8,11 +8,11 @@ export const Testimonials = () => {
           {/* Left Column Text & Key Statistics */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-4">
-              <span className="inline-block bg-[#dff3f0] text-[#0d3b2e] text-xs font-extrabold tracking-wider uppercase px-4 py-1.5 rounded-full">
+              <span className="inline-block tracking-widest text-[#0d3b2e] text-s font-bold">
                 What Our Clients Say
               </span>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight leading-tight font-montserrat">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight leading-tight font-montserrat">
                 Built on quality. Proven by performance.
               </h2>
 

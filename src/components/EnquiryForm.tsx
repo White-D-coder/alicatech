@@ -42,9 +42,9 @@ export const EnquiryForm = () => {
           {/* Header */}
           <div className="mb-8">
             <span className="text-[#0d3b2e] text-sm sm:text-base font-bold tracking-wider block mb-4">
-              send a message
+              Send A Message
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0d3b2e] tracking-tight font-montserrat">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#0d3b2e] tracking-tight font-montserrat">
               Business Enquires
             </h3>
           </div>

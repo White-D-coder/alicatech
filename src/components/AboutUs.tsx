@@ -8,7 +8,7 @@ export const AboutUs = () => {
           {/* Left Column Content */}
           <div className="lg:col-span-7 space-y-6 pt-16 lg:pt-20">
             <span className="text-[#0d3b2e] font-bold text-sm tracking-wider block">
-              about us
+              About Us
             </span>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight leading-tight font-montserrat">
