@@ -23,6 +23,13 @@ function App() {
 
   const [pageOpacity, setPageOpacity] = useState(true);
 
+  // ALWAYS scroll to top on page change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [currentPage]);
+
   const handleNavigate = (page: string) => {
     setPageOpacity(false);
 
@@ -31,16 +38,14 @@ function App() {
 
     setTimeout(() => {
       setCurrentPage(page);
-
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
 
       setTimeout(() => {
         setPageOpacity(true);
       }, 30);
-    }, 150);
+    }, 120);
   };
 
   // Handle browser Back / Forward
@@ -54,16 +59,14 @@ function App() {
 
       setTimeout(() => {
         setCurrentPage(hash || 'home');
-
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
 
         setTimeout(() => {
           setPageOpacity(true);
         }, 30);
-      }, 150);
+      }, 120);
     };
 
     window.addEventListener('popstate', handlePopState);
