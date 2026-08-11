@@ -121,7 +121,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 1
               </div>
-              <span className="text-xs sm:text-sm font-extrabold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
                 MAKE AN APPOINTMENT
               </span>
             </div>
@@ -130,7 +130,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 2
               </div>
-              <span className="text-xs sm:text-sm font-extrabold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
                 BUSINESS CONSULTATION
               </span>
             </div>
@@ -139,7 +139,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 3
               </div>
-              <span className="text-xs sm:text-sm font-extrabold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
                 BUSINESS ANALYTICS
               </span>
             </div>
@@ -160,10 +160,21 @@ export const AboutPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-[2px] border border-white/30 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+                <MessageSquare size={28} strokeWidth={1.5} />
+              </div>
+              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
+                <AnimatedCounter end={12} suffix="+" />
+              </span>
+              <span className="text-sm font-medium text-emerald-100">
+                Years of Experience
+              </span>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-3 p-4">
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
                 <Compass size={28} strokeWidth={1.5} />
               </div>
-              <span className="text-4xl sm:text-5xl font-extrabold font-montserrat tracking-tight text-white">
+              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={10} suffix="+" />
               </span>
               <span className="text-sm font-medium text-emerald-100">
@@ -172,19 +183,7 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
-                <MessageSquare size={28} strokeWidth={1.5} />
-              </div>
-              <span className="text-4xl sm:text-5xl font-extrabold font-montserrat tracking-tight text-white">
-                <AnimatedCounter end={12} suffix="+" />
-              </span>
-              <span className="text-sm font-medium text-emerald-100">
-                Years of Experience
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
                 <ShoppingCart size={28} strokeWidth={1.5} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
@@ -196,10 +195,10 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
                 <Route size={28} strokeWidth={1.5} />
               </div>
-              <span className="text-4xl sm:text-5xl font-extrabold font-montserrat tracking-tight text-white">
+              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={30} suffix="k" />
               </span>
               <span className="text-sm font-medium text-emerald-100">
@@ -245,7 +244,7 @@ export const AboutPage = () => {
                   </p>
 
                   <div className="pt-3 border-t border-gray-100 space-y-0.5">
-                    <h4 className="text-base font-extrabold text-[#0d3b2e] font-montserrat leading-snug">
+                    <h4 className="text-base font-bold text-[#0d3b2e] font-montserrat leading-snug">
                       {review.author}
                     </h4>
                     <p className="text-xs text-gray-500 font-medium">
@@ -261,7 +260,7 @@ export const AboutPage = () => {
           <div className="text-center pt-16">
             <p className="text-gray-500 text-sm font-medium">
               Our nearly{' '}
-              <span className="text-[#0d3b2e] font-extrabold text-base">
+              <span className="text-[#0d3b2e] font-bold text-base">
                 <AnimatedCounter end={400} suffix="+" />
               </span>{' '}
               committed staff members are ready to help.

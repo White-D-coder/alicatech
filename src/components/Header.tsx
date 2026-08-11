@@ -22,19 +22,18 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
     onNavigate(page);
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-md shadow-xs border-b border-gray-100 transition-all duration-300">
+    <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-md shadow-md border-b border-gray-100 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <button
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-2 focus:outline-none py-1 group cursor-pointer"
         >
-          <Logo height={24} className="sm:hidden" />
-          <Logo height={34} className="hidden sm:inline-block" />
+          <Logo height={44} className="sm:hidden" />
+          <Logo height={54} className="hidden sm:inline-block" />
         </button>
 
         {/* Desktop Navigation Links */}
@@ -50,20 +49,6 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
             <span
               className={`absolute bottom-0 left-0 h-0.5 bg-[#006828] transition-all duration-300 ${
                 currentPage === 'home' ? 'w-full' : 'w-0 hover:w-full'
-              }`}
-            />
-          </button>
-          {/* blogs */}
-          <button
-            onClick={() => handleNavClick('blogs')}
-            className={`relative py-2 text-[15px] font-semibold transition-colors duration-200 cursor-pointer ${
-              currentPage === 'blogs' ? 'text-[#006828] font-bold' : 'text-gray-800 hover:text-[#006828]'
-            }`}
-          >
-            Blogs
-            <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-[#006828] transition-all duration-300 ${
-                currentPage === 'blogs' ? 'w-full' : 'w-0 hover:w-full'
               }`}
             />
           </button>
@@ -109,7 +94,7 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
               />
             </button>
 
-            {/* Clickable Services Dropdown Box (Zero-gap top-full container) */}
+            {/* Clickable Services Dropdown Box */}
             <div
               className={`absolute top-full left-0 pt-1 w-80 transition-all duration-200 z-50 ${
                 servicesDropdownOpen
@@ -211,7 +196,6 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
             About Us
           </button>
 
-          {/* Mobile Services Section */}
           <div className="space-y-1 pl-3 border-l-2 border-[#006828] my-2">
             <span className="text-xs font-bold text-[#006828] uppercase tracking-wider block px-3 py-1">
               Services
