@@ -17,10 +17,22 @@ import { ContactPage } from './components/ContactPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
+  const [pageOpacity, setPageOpacity] = useState<boolean>(true);
+
+  const handleNavigate = (page: string) => {
+    setPageOpacity(false);
+    setTimeout(() => {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        setPageOpacity(true);
+      }, 30);
+    }, 150);
+  };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
+    setPageOpacity(true);
+  }, []);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -31,28 +43,28 @@ function App() {
         return (
           <ServicesPage
             serviceType="service-smt"
-            onNavigateService={(key) => setCurrentPage(key)}
+            onNavigateService={(key) => handleNavigate(key)}
           />
         );
       case 'service-testing':
         return (
           <ServicesPage
             serviceType="service-testing"
-            onNavigateService={(key) => setCurrentPage(key)}
+            onNavigateService={(key) => handleNavigate(key)}
           />
         );
       case 'service-turnkey':
         return (
           <ServicesPage
             serviceType="service-turnkey"
-            onNavigateService={(key) => setCurrentPage(key)}
+            onNavigateService={(key) => handleNavigate(key)}
           />
         );
       case 'service-end-to-end':
         return (
           <ServicesPage
             serviceType="service-end-to-end"
-            onNavigateService={(key) => setCurrentPage(key)}
+            onNavigateService={(key) => handleNavigate(key)}
           />
         );
       case 'capabilities':
@@ -67,7 +79,7 @@ function App() {
           <>
             <Hero />
             <AboutUs />
-            <WhatWeDo onNavigate={setCurrentPage} />
+            <WhatWeDo onNavigate={handleNavigate} />
             <WhyChooseAlica />
             <LocationBanner />
             <Blogs />
@@ -79,11 +91,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#ffc82e] selection:text-black">
-      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="transition-opacity duration-300">
+      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      <main
+        className={`transition-all duration-300 ease-in-out ${
+          pageOpacity ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+        }`}
+      >
         {renderPage()}
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }

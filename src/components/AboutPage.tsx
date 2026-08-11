@@ -51,8 +51,8 @@ export const AboutPage = () => {
 
             {/* Right Text Content */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold text-gray-500 tracking-wider uppercase block">
-                — ARCH PHILOSOPHY
+              <span className="text-s font-bold text-gray-500 tracking-wider block">
+                Arch Philosophy
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight whitespace-nowrap">
@@ -86,10 +86,11 @@ export const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0d3b2e] font-montserrat tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight whitespace-nowrap">
                 Our{' '}
-                <span className="bg-[#e2ebf8] px-2 py-0.5 rounded-xs">
-                  Approach
+                <span className="relative inline-block">
+                  <span className="relative z-10">Approach</span>
+                  <span className="absolute left-0 right-0 bottom-[6%] h-[30%] bg-[#dce7f8] z-0" />
                 </span>
               </h2>
 
@@ -159,7 +160,7 @@ export const AboutPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 rounded-[2px] border border-white/30 flex items-center justify-center text-white mb-1">
                 <Compass size={28} strokeWidth={1.5} />
               </div>
               <span className="text-4xl sm:text-5xl font-extrabold font-montserrat tracking-tight text-white">
@@ -186,7 +187,7 @@ export const AboutPage = () => {
               <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
                 <ShoppingCart size={28} strokeWidth={1.5} />
               </div>
-              <span className="text-4xl sm:text-5xl font-extrabold font-montserrat tracking-tight text-white">
+              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={700} suffix="+" />
               </span>
               <span className="text-sm font-medium text-emerald-100">
@@ -213,10 +214,10 @@ export const AboutPage = () => {
       <section className="py-20 lg:py-24 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold text-gray-500 tracking-wider uppercase block">
-              A deep commitment to diversity
+            <span className="text-s font-bold text-gray-500 tracking-wider block">
+              A Deep Commitment to Diversity
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0d3b2e] font-montserrat tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
               Business Partners
             </h2>
           </div>
