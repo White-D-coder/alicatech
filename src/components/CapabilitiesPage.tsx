@@ -4,7 +4,7 @@ export const CapabilitiesPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Hero Section with Big Yellow Overlapping Title "Manufacturing Capabilities" */}
-      <section className="bg-white pt-12 sm:pt-16 pb-16 lg:pb-24 text-center relative overflow-hidden bg-grid-lines">
+      <section className="bg-white pt-20 sm:pt-28 pb-16 lg:pb-24 text-center relative overflow-hidden bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Huge Yellow 2-Line Overlapping Title */}
           <div className="relative z-20 space-y-0">
@@ -15,13 +15,44 @@ export const CapabilitiesPage = () => {
           </div>
 
           {/* Centered Image overlapping with top text */}
-          <div className="relative z-10 -mt-8 sm:-mt-12 lg:-mt-16 rounded-[4px] overflow-hidden shadow-2xl max-w-5xl mx-auto border border-gray-100">
-            <img
-              src="/37264.jpg"
-              alt="Alica Technologies Manufacturing Robotic Line"
-              className="w-full h-auto object-cover max-h-[580px]"
-            />
-          </div>
+          <div className="group relative z-10 -mt-8 sm:-mt-12 lg:-mt-16 rounded-[4px] overflow-hidden shadow-2xl max-w-5xl mx-auto border border-gray-100 cursor-pointer">
+
+  <img
+    src="/37264.jpg"
+    alt="Alica Technologies Manufacturing Robotic Line"
+    className="
+      w-full h-auto object-cover max-h-[580px]
+      transition-transform duration-700 ease-out
+      group-hover:scale-[1.04]
+    "
+  />
+
+  {/* Dark hover overlay */}
+  <div
+    className="
+      absolute inset-0
+      bg-[#0d3b2e]/0
+      group-hover:bg-[#0d3b2e]/10
+      transition-all duration-500
+    "
+  />
+
+  {/* Light sweep */}
+  <div
+    className="
+      absolute top-0 -left-[120%]
+      w-[60%] h-full
+      bg-gradient-to-r
+      from-transparent
+      via-white/20
+      to-transparent
+      skew-x-[-20deg]
+      transition-all duration-700 ease-out
+      group-hover:left-[130%]
+      pointer-events-none
+    "
+  />
+</div>
         </div>
       </section>
 

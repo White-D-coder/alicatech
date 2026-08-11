@@ -19,17 +19,24 @@ export const AboutPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. Top Green Banner - Centered About Heading */}
-      <section className="bg-[#355c31] text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden">
-        <div className="flex-1 flex items-center justify-center">
-          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center">
-            About Us
-          </h1>
-        </div>
-        <div className="pb-2">
-          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
-        </div>
-      </section>
+      {/* 1. Top Green Banner - Safe Top Padding for Sticky Header */}
+      <section
+  className="text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden bg-cover bg-center"
+  style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
+>
+  <div className="flex-1 flex items-center justify-center relative z-10">
+    <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
+      About
+    </h1>
+  </div>
+
+  <div className="pb-2 relative z-10">
+    <ChevronDown
+      size={22}
+      className="opacity-80 animate-bounce text-white"
+    />
+  </div>
+</section>
 
       {/* 2. Arch Philosophy & Headquarters Section */}
       <section className="py-16 lg:py-20 bg-white bg-grid-lines">
@@ -39,7 +46,7 @@ export const AboutPage = () => {
             <div className="lg:col-span-6 space-y-3">
               <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="/PCB-Assembly-Ahmedabad.jpg"
+                  src="/media-library-download-1786351951/O1.jpg"
                   alt="Alica Technologies Global Headquarters Ahmedabad"
                   className="w-full h-auto object-cover"
                 />
@@ -51,13 +58,17 @@ export const AboutPage = () => {
 
             {/* Right Text Content */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider block font-montserrat">
-                — Arch Philosophy
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider block font-montserrat uppercase">
+                Arch Philosophy
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
-                About Alica Technologies
-              </h2>
+  About{' '}
+  <span className="relative inline-block">
+    <span className="relative z-10">Alica Technologies</span>
+    <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
+  </span>
+</h2>
 
               <p className="text-gray-700 font-medium text-base sm:text-lg leading-relaxed">
                 A pure Electronic Manufacturing Services (EMS) company focused on precision, quality, and reliable execution.
@@ -82,9 +93,13 @@ export const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
-                Our Approach
-              </h2>
+<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
+  Our{' '}
+  <span className="relative inline-block">
+    <span className="relative z-10">Approach</span>
+    <span className="absolute left-0 right-0 bottom-[8%] h-[32%] bg-[#dce7f8] -z-0" />
+  </span>
+</h2>
 
               <p className="text-gray-700 text-base font-medium leading-relaxed">
                 At Alica Technologies, quality is integrated into every stage of manufacturing.
@@ -152,8 +167,8 @@ export const AboutPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
-                <Compass size={28} strokeWidth={1.5} />
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+                <Compass size={38} strokeWidth={1} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={10} suffix="+" />
@@ -164,8 +179,8 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
-                <MessageSquare size={28} strokeWidth={1.5} />
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+                <MessageSquare size={38} strokeWidth={1} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={12} suffix="+" />
@@ -176,8 +191,8 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
-                <ShoppingCart size={28} strokeWidth={1.5} />
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+                <ShoppingCart size={38} strokeWidth={1} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={700} suffix="+" />
@@ -188,8 +203,8 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
-                <Route size={28} strokeWidth={1.5} />
+              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+                <Route size={38} strokeWidth={1} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
                 <AnimatedCounter end={30} suffix="k" />

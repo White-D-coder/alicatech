@@ -195,7 +195,7 @@ export const ServicesPage = ({
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Hero Banner (Always Primary Green #355c31) */}
-      <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
+      <section className="bg-[#355c31] text-white pt-20 sm:pt-28 pb-16 text-center relative">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
           <h1 className="text-3xl sm:text-5xl font-bold font-montserrat tracking-tight leading-tight max-w-4xl mx-auto">
             {currentConfig.title}

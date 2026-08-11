@@ -55,7 +55,7 @@ export const IndustriesPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Top Industrial Hero Banner */}
-      <section className="relative bg-[#062630] text-white py-20 lg:py-28 overflow-hidden text-center">
+      <section className="relative bg-[#062630] text-white pt-24 sm:pt-32 pb-20 lg:pb-24 overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
           <img
             src="media-library-download-1786351951/2151995237.jpg"
