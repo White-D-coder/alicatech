@@ -39,8 +39,8 @@ export const WhyChooseAlica = () => {
           {/* Right Column Differentiators Text & Checklist */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <span className="text-xs font-bold text-[#0d3b2e] tracking-widest uppercase block font-montserrat mb-3">
-                — Differentiators
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-widest block font-montserrat mb-3">
+                Differentiators
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight mb-4 font-montserrat">
