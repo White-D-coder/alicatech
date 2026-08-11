@@ -77,7 +77,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
           {/* Column 2: Contact Details */}
           <div className="md:col-span-4 space-y-6">
-            <h3 className="text-lg font-extrabold text-white tracking-wide">
+            <h3 className="text-lg font-bold text-white tracking-wide">
               Contact
             </h3>
 
@@ -134,7 +134,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
 
           {/* Column 3: Services Links */}
           <div className="md:col-span-3 space-y-6">
-            <h3 className="text-lg font-extrabold text-white tracking-wide">
+            <h3 className="text-lg font-bold text-white tracking-wide">
               Services
             </h3>
 

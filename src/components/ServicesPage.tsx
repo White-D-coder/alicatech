@@ -197,7 +197,7 @@ export const ServicesPage = ({
       {/* 1. Top Green Hero Banner (Always Primary Green #355c31) */}
       <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-montserrat tracking-tight leading-tight max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl font-bold font-montserrat tracking-tight leading-tight max-w-4xl mx-auto">
             {currentConfig.title}
           </h1>
           <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
@@ -218,7 +218,7 @@ export const ServicesPage = ({
                     <button
                       key={item.key}
                       onClick={() => onNavigateService && onNavigateService(item.key)}
-                      className="w-full flex items-center justify-between px-5 py-4 text-sm font-extrabold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
+                      className="w-full flex items-center justify-between px-5 py-4 text-sm font-bold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
                     >
                       <span>{item.label}</span>
                       <span className="text-gray-400 font-bold">›</span>
@@ -228,7 +228,7 @@ export const ServicesPage = ({
 
                 {/* Get a Free Quote Form Box */}
                 <div className="bg-[#f8faf9] rounded-[10px] p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
-                  <h3 className="text-xl font-extrabold text-[#0d3b2e] font-montserrat">
+                  <h3 className="text-xl font-bold text-[#0d3b2e] font-montserrat">
                     Get a Free Quote
                   </h3>
 
@@ -286,7 +286,7 @@ export const ServicesPage = ({
                     </span>
                     <a
                       href="tel:+919727178787"
-                      className="text-lg font-extrabold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
+                      className="text-lg font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
                     >
                       +91 97271 78787
                     </a>
@@ -305,10 +305,10 @@ export const ServicesPage = ({
                   className="w-full h-[400px] sm:h-[480px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12 text-white">
-                  <span className="text-xs font-extrabold tracking-widest uppercase text-gray-300 mb-2">
+                  <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2">
                     SERVICES —
                   </span>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold font-montserrat mb-3 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-bold font-montserrat mb-3 leading-tight">
                     {currentConfig.title}
                   </h2>
                   <p className="text-gray-200 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -325,7 +325,7 @@ export const ServicesPage = ({
 
               {/* Benefits Checklist */}
               <div className="pt-8 border-t border-b border-gray-200 py-10 space-y-8">
-                <h3 className="text-3xl font-extrabold text-[#0d3b2e] font-montserrat">
+                <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
                   {currentConfig.benefitsTitle}
                 </h3>
 
@@ -343,7 +343,7 @@ export const ServicesPage = ({
 
               {/* FAQ Accordion */}
               <div className="space-y-6">
-                <h3 className="text-3xl font-extrabold text-[#0d3b2e] font-montserrat">
+                <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
                   Questions? You&apos;re covered.
                 </h3>
 
@@ -357,11 +357,10 @@ export const ServicesPage = ({
                       >
                         <button
                           onClick={() => setOpenFaq(isOpen ? null : index)}
-                          className={`w-full flex items-center justify-between p-5 text-left font-bold text-base transition-colors ${
-                            isOpen
+                          className={`w-full flex items-center justify-between p-5 text-left font-bold text-base transition-colors ${isOpen
                               ? 'bg-[#184441] text-white'
                               : 'bg-[#f8faf9] text-[#0d3b2e] hover:bg-gray-100'
-                          }`}
+                            }`}
                         >
                           <span className="pr-4">{faq.q}</span>
                           {isOpen ? (

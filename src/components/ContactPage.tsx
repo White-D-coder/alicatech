@@ -24,7 +24,7 @@ export const ContactPage = () => {
       {/* 1. Top Green Hero Banner */}
       <section className="bg-[#355c31] text-white py-16 sm:py-20 text-center relative">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center space-y-3">
-          <h1 className="text-4xl sm:text-6xl font-extrabold font-montserrat tracking-tight text-white">
+          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-tight text-white">
             Contact Us
           </h1>
           <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
@@ -38,7 +38,7 @@ export const ContactPage = () => {
             {/* Left Card: Get in Touch Box */}
             <div className="lg:col-span-6 bg-white rounded-[10px] border border-gray-200/90 p-8 sm:p-12 shadow-xs space-y-8">
               <div className="space-y-3">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] font-montserrat tracking-tight">
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
                   Get in touch
                 </h2>
                 <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
@@ -127,7 +127,7 @@ export const ContactPage = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-[#ffc82e] hover:bg-[#f5b918] text-gray-950 font-extrabold py-4 rounded-[6px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat uppercase tracking-wider cursor-pointer"
+                    className="w-full bg-[#ffc82e] hover:bg-[#f5b918] text-gray-950 font-bold py-4 rounded-[6px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat uppercase tracking-wider cursor-pointer"
                   >
                     get in touch
                   </button>

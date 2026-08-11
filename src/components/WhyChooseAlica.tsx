@@ -43,7 +43,7 @@ export const WhyChooseAlica = () => {
                 — Differentiators
               </span>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight mb-4 font-montserrat">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight mb-4 font-montserrat">
                 Why Choose Alica?
               </h2>
 
@@ -54,27 +54,43 @@ export const WhyChooseAlica = () => {
 
             {/* Checklist */}
             <div className="space-y-4 pt-2">
-              {differentiators.map((item, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                      item.highlighted
-                        ? 'bg-[#0d3b2e] text-white shadow-md'
-                        : 'bg-[#eaf1f1] text-[#0d3b2e]'
-                    }`}
-                  >
-                    <Check size={16} strokeWidth={item.highlighted ? 3 : 2.5} />
-                  </div>
-                  <span
-                    className={`text-base font-semibold ${
-                      item.highlighted ? 'text-[#0d3b2e] font-bold' : 'text-gray-700'
-                    }`}
-                  >
-                    {item.title}
-                  </span>
-                </div>
-              ))}
-            </div>
+  {differentiators.map((item, index) => (
+    <div
+      key={index}
+      className="group flex items-center space-x-4 cursor-pointer transition-all duration-300 ease-out hover:translate-x-2"
+    >
+      {/* Check Icon */}
+      <div
+        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0
+          transition-all duration-300 ease-out
+          group-hover:scale-110 group-hover:rotate-[8deg]
+          ${
+            item.highlighted
+              ? 'bg-[#0d3b2e] text-white shadow-md group-hover:shadow-lg'
+              : 'bg-[#eaf1f1] text-[#0d3b2e] group-hover:bg-[#0d3b2e] group-hover:text-white'
+          }`}
+      >
+        <Check
+          size={16}
+          strokeWidth={item.highlighted ? 3 : 2.5}
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+      </div>
+
+      {/* Text */}
+      <span
+        className={`text-base font-semibold transition-all duration-300 ease-out
+          ${
+            item.highlighted
+              ? 'text-[#0d3b2e] font-bold group-hover:text-[#164b3a]'
+              : 'text-gray-700 group-hover:text-[#0d3b2e]'
+          }`}
+      >
+        {item.title}
+      </span>
+    </div>
+  ))}
+</div>
           </div>
         </div>
       </div>

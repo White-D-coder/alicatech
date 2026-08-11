@@ -55,7 +55,7 @@ export const Blogs = () => {
 
                 {/* Content */}
                 <div className="p-6 space-y-3">
-                  <h3 className="text-xl font-extrabold text-gray-900 group-hover:text-[#006828] transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#006828] transition-colors leading-snug">
                     {post.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed font-normal">
@@ -68,7 +68,7 @@ export const Blogs = () => {
               <div className="px-6 pb-6 pt-2">
                 <a
                   href={post.href}
-                  className="inline-flex items-center gap-2 text-xs font-extrabold tracking-wider uppercase text-[#0d3b2e] hover:text-[#006828] transition-colors group/link"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[#0d3b2e] hover:text-[#006828] transition-colors group/link"
                 >
                   <span className="w-6 h-0.5 bg-[#0d3b2e] group-hover/link:w-8 transition-all duration-200" />
                   <span>CONTINUE READING</span>

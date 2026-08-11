@@ -15,7 +15,7 @@ export const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
           {/* Main Title - Partner on its own line directly under Your EMS */}
-          <h1 className="text-5xl sm:text-6xl lg:text-[68px] font-extrabold font-montserrat tracking-tight leading-[1.1] text-white drop-shadow-md">
+          <h1 className="text-5xl sm:text-6xl lg:text-[68px] font-bold font-montserrat tracking-tight leading-[1.1] text-white drop-shadow-md">
             <span className="block">Your EMS</span>
             <span className="relative inline-block text-white mt-1">
               Partner
@@ -59,7 +59,7 @@ export const Hero = () => {
               </span>
               <a
                 href="tel:+919727178787"
-                className="text-lg sm:text-xl font-extrabold text-[#ffc82e] hover:text-white transition-colors font-montserrat tracking-tight block"
+                className="text-lg sm:text-xl font-bold text-[#ffc82e] hover:text-white transition-colors font-montserrat tracking-tight block"
               >
                 +91 97271 78787
               </a>

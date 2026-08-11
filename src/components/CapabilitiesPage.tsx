@@ -8,7 +8,7 @@ export const CapabilitiesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Huge Yellow 2-Line Overlapping Title */}
           <div className="relative z-20 space-y-0">
-            <h1 className="text-5xl sm:text-7xl lg:text-[100px] font-extrabold text-[#ffc82e] font-montserrat tracking-tight leading-[0.95] text-center drop-shadow-xs">
+            <h1 className="text-5xl sm:text-7xl lg:text-[100px] font-bold text-[#ffc82e] font-montserrat tracking-tight leading-[0.95] text-center drop-shadow-xs">
               <span className="block">Manufacturing</span>
               <span className="block mt-1">Capabilities</span>
             </h1>
@@ -31,7 +31,7 @@ export const CapabilitiesPage = () => {
           {/* Reliable Execution Row */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-extrabold text-[#0d3b2e] tracking-wider uppercase block">
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block">
                 Reliable Execution
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0d3b2e] font-montserrat tracking-tight leading-snug">
@@ -67,7 +67,7 @@ export const CapabilitiesPage = () => {
 
             {/* Right Text */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="inline-block bg-[#e8eff1] text-[#0d3b2e] text-[11px] font-extrabold tracking-widest uppercase px-3.5 py-1 rounded-full">
+              <span className="inline-block bg-[#e8eff1] text-[#0d3b2e] text-[11px] font-bold tracking-widest uppercase px-3.5 py-1 rounded-full">
                 SURFACE MOUNT & THRU-HOLE ASSEMBLY
               </span>
 
@@ -103,7 +103,7 @@ export const CapabilitiesPage = () => {
               <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
                 1
               </div>
-              <span className="text-xs font-extrabold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
+              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
                 <span>PCB Preparation</span>
                 <span className="text-gray-400">›</span>
               </span>
@@ -113,7 +113,7 @@ export const CapabilitiesPage = () => {
               <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
                 2
               </div>
-              <span className="text-xs font-extrabold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
+              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
                 <span>Component Placement</span>
                 <span className="text-gray-400">›</span>
               </span>
@@ -123,7 +123,7 @@ export const CapabilitiesPage = () => {
               <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
                 3
               </div>
-              <span className="text-xs font-extrabold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase">
                 Reflow & Inspection
               </span>
             </div>
@@ -190,7 +190,7 @@ export const CapabilitiesPage = () => {
 
             {/* Right Text */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-extrabold text-[#0d3b2e] tracking-wider uppercase block">
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block">
                 ADVANCED INSPECTION SYSTEMS
               </span>
 

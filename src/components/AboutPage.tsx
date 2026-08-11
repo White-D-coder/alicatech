@@ -20,16 +20,23 @@ export const AboutPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Banner - Centered About Heading */}
-      <section className="bg-[#355c31] text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden">
-        <div className="flex-1 flex items-center justify-center">
-          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center">
-            About
-          </h1>
-        </div>
-        <div className="pb-2">
-          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
-        </div>
-      </section>
+      <section
+  className="text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden bg-cover bg-center"
+  style={{ backgroundImage: "url('media-library-download-1786351951/man-using-soldering-iron-circuit-1.jpg')"}}
+>
+  <div className="flex-1 flex items-center justify-center relative z-10">
+    <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
+      About
+    </h1>
+  </div>
+
+  <div className="pb-2 relative z-10">
+    <ChevronDown
+      size={22}
+      className="opacity-80 animate-bounce text-white"
+    />
+  </div>
+</section>
 
       {/* 2. Arch Philosophy & Headquarters Section */}
       <section className="py-20 lg:py-24 bg-white bg-grid-lines">

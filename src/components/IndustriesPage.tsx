@@ -58,15 +58,15 @@ export const IndustriesPage = () => {
       <section className="relative bg-[#062630] text-white py-20 lg:py-28 overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/2151589630.jpg"
+            src="media-library-download-1786351951/2151995237.jpg"
             alt="Industrial Skyline Sunset"
-            className="w-full h-full object-cover brightness-90 opacity-70"
+            className="w-full h-full object-cover brightness-90 opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-950/80 via-amber-950/60 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white font-montserrat tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white font-montserrat tracking-tight leading-tight">
             Industries we serve
           </h1>
           <p className="text-gray-200 text-base sm:text-lg font-normal max-w-2xl mx-auto leading-relaxed">

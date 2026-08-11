@@ -24,7 +24,7 @@ export const Testimonials = () => {
             {/* Bottom 3 Stats Grid with Animated Counters */}
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">
               <div>
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] block tracking-tight font-montserrat">
+                <span className="text-3xl sm:text-4xl font-bold text-[#0d3b2e] block tracking-tight font-montserrat">
                   <AnimatedCounter end={500} suffix="K+" />
                 </span>
                 <span className="text-[11px] font-bold text-gray-500 tracking-wider uppercase block mt-1">
@@ -33,7 +33,7 @@ export const Testimonials = () => {
               </div>
 
               <div>
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] block tracking-tight font-montserrat">
+                <span className="text-3xl sm:text-4xl font-bold text-[#0d3b2e] block tracking-tight font-montserrat">
                   <AnimatedCounter end={90} suffix="+" />
                 </span>
                 <span className="text-[11px] font-bold text-gray-500 tracking-wider uppercase block mt-1">
@@ -42,7 +42,7 @@ export const Testimonials = () => {
               </div>
 
               <div>
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#0d3b2e] block tracking-tight font-montserrat">
+                <span className="text-3xl sm:text-4xl font-bold text-[#0d3b2e] block tracking-tight font-montserrat">
                   <AnimatedCounter end={100} suffix="%" />
                 </span>
                 <span className="text-[11px] font-bold text-gray-500 tracking-wider uppercase block mt-1">
