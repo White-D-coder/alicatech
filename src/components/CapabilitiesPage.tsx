@@ -129,33 +129,31 @@ export const CapabilitiesPage = () => {
           </div>
 
           {/* 3 Step Process Bar */}
-          <div className="bg-white rounded-full border border-gray-200 shadow-md p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-4xl mx-auto">
-            <div className="flex items-center justify-center space-x-3">
-              <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
+          <div className="bg-white rounded-full border border-gray-200 shadow-md p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center max-w-4xl mx-auto transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="flex items-center justify-center space-x-3 group">
+              <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 1
               </div>
-              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
-                <span>PCB Preparation</span>
-                <span className="text-gray-400">›</span>
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                MAKE AN APPOINTMENT
               </span>
             </div>
 
-            <div className="flex items-center justify-center space-x-3 sm:border-l sm:border-gray-200">
-              <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
+            <div className="flex items-center justify-center space-x-3 sm:border-l sm:border-gray-200 group">
+              <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 2
               </div>
-              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase flex items-center gap-2">
-                <span>Component Placement</span>
-                <span className="text-gray-400">›</span>
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                BUSINESS CONSULTATION
               </span>
             </div>
 
-            <div className="flex items-center justify-center space-x-3 sm:border-l sm:border-gray-200">
-              <div className="w-8 h-8 rounded-full bg-[#3b6932] font-bold text-white flex items-center justify-center text-xs shrink-0">
+            <div className="flex items-center justify-center space-x-3 sm:border-l sm:border-gray-200 group">
+              <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 3
               </div>
-              <span className="text-xs font-bold tracking-wider text-[#0d3b2e] uppercase">
-                Reflow & Inspection
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
+                BUSINESS ANALYTICS
               </span>
             </div>
           </div>
