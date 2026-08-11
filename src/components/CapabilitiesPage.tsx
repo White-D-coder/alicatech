@@ -173,7 +173,7 @@ export const CapabilitiesPage = () => {
       </section>
 
       {/* 3. Component Handling Capabilities Section */}
-      <section className="bg-[#fafafa] py-20 lg:py-24 border-t border-gray-100">
+      <section className="bg-[#ffffff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content with Hover Check Icons */}

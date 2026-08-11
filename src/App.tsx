@@ -126,26 +126,25 @@ function App() {
           <>
             <Hero />
             <AboutUs />
-            <WhatWeDo />
+            <WhatWeDo onNavigate={handleNavigate} />
             <WhyChooseAlica />
             <LocationBanner />
             <Blogs />
             <Testimonials />
-            <Footer />
           </>
         );
     }
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans">
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
       />
 
       <main
-        className={`transition-all duration-300 ease-in-out ${
+        className={`flex-1 transition-all duration-300 ease-in-out ${
           pageOpacity
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-2'
@@ -153,7 +152,9 @@ function App() {
       >
         {renderPage()}
       </main>
-    </>
+
+      <Footer onNavigate={handleNavigate} />
+    </div>
   );
 }
 
