@@ -16,7 +16,8 @@ export const Hero = () => {
         <div className="max-w-3xl space-y-6 pt-4 pb-12 sm:pb-16 lg:pb-20">
           {/* Main Title - Exact Match to Screenshot */}
           <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-extrabold font-montserrat tracking-tight leading-[1.08] text-white drop-shadow-md">
-            Your EMS{' '}
+            <span>Your EMS</span>
+            <br />
             <span className="relative inline-block text-white">
               Partner
               {/* Yellow Underline Stroke directly under Partner */}
@@ -47,7 +48,7 @@ export const Hero = () => {
             {/* View Services Yellow Button */}
             <a
               href="#services"
-              className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-base tracking-wide shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-montserrat"
+              className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-base tracking-wide shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-montserrat cursor-pointer"
             >
               View Services
             </a>
