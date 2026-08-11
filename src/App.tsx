@@ -8,7 +8,6 @@ import { LocationBanner } from './components/LocationBanner';
 import { Blogs } from './components/Blogs';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
-
 import { AboutPage } from './components/AboutPage';
 import { ServicesPage } from './components/ServicesPage';
 import { CapabilitiesPage } from './components/CapabilitiesPage';
@@ -16,28 +15,69 @@ import { IndustriesPage } from './components/IndustriesPage';
 import { ContactPage } from './components/ContactPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<string>('home');
-  const [pageOpacity, setPageOpacity] = useState<boolean>(true);
+  // Get the current page from the URL after refresh
+  const [currentPage, setCurrentPage] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return hash || 'home';
+  });
+
+  const [pageOpacity, setPageOpacity] = useState(true);
 
   const handleNavigate = (page: string) => {
     setPageOpacity(false);
+
+    // Save the current page in the URL
+    window.history.pushState({}, '', `#${page}`);
+
     setTimeout(() => {
       setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+
       setTimeout(() => {
         setPageOpacity(true);
       }, 30);
     }, 150);
   };
 
+  // Handle browser Back / Forward
   useEffect(() => {
     setPageOpacity(true);
+
+    const handlePopState = () => {
+      const hash = window.location.hash.replace('#', '');
+
+      setPageOpacity(false);
+
+      setTimeout(() => {
+        setCurrentPage(hash || 'home');
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+
+        setTimeout(() => {
+          setPageOpacity(true);
+        }, 30);
+      }, 150);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []);
 
   const renderPage = () => {
     switch (currentPage) {
       case 'about':
         return <AboutPage />;
+
       case 'services':
       case 'service-smt':
         return (
@@ -46,6 +86,7 @@ function App() {
             onNavigateService={(key) => handleNavigate(key)}
           />
         );
+
       case 'service-testing':
         return (
           <ServicesPage
@@ -53,6 +94,7 @@ function App() {
             onNavigateService={(key) => handleNavigate(key)}
           />
         );
+
       case 'service-turnkey':
         return (
           <ServicesPage
@@ -60,6 +102,7 @@ function App() {
             onNavigateService={(key) => handleNavigate(key)}
           />
         );
+
       case 'service-end-to-end':
         return (
           <ServicesPage
@@ -67,40 +110,50 @@ function App() {
             onNavigateService={(key) => handleNavigate(key)}
           />
         );
+
       case 'capabilities':
         return <CapabilitiesPage />;
+
       case 'industries':
         return <IndustriesPage />;
+
       case 'contact':
         return <ContactPage />;
+
       case 'home':
       default:
         return (
           <>
             <Hero />
             <AboutUs />
-            <WhatWeDo onNavigate={handleNavigate} />
+            <WhatWeDo />
             <WhyChooseAlica />
             <LocationBanner />
             <Blogs />
             <Testimonials />
+            <Footer />
           </>
         );
     }
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#ffc82e] selection:text-black">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+    <>
+      <Header
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+      />
+
       <main
         className={`transition-all duration-300 ease-in-out ${
-          pageOpacity ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+          pageOpacity
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-2'
         }`}
       >
         {renderPage()}
       </main>
-      <Footer onNavigate={handleNavigate} />
-    </div>
+    </>
   );
 }
 

@@ -46,7 +46,7 @@ export const IndustriesPage = () => {
     },
     {
       id: 8,
-      title: 'Aerospace & defense',
+      title: 'Aerospace & Defense',
       image: '/Aerospace-defense.jpg',
       description: 'Our assemblies are designed to withstand severe thermal shock, vibration, and radiation using advanced materials.',
     },
@@ -62,12 +62,12 @@ export const IndustriesPage = () => {
             alt="Industrial Skyline Sunset"
             className="w-full h-full object-cover brightness-90 opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-r" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-950/80 via-amber-950/60 to-black/70" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <h1 className="text-4xl sm:text-6xl font-bold text-white font-montserrat tracking-tight leading-tight">
-            Industries we serve
+            Industries We Serve
           </h1>
           <p className="text-gray-200 text-base sm:text-lg font-normal max-w-2xl mx-auto leading-relaxed">
             Our manufacturing approach focuses on durability, accuracy, and compliance to meet the operational demands of industrial applications.
@@ -80,7 +80,7 @@ export const IndustriesPage = () => {
       </section>
 
       {/* 2. 8 Industry Cards Grid */}
-      <section className="py-20 lg:py-28 bg-[#fcfdfe] bg-grid-lines">
+      <section className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {industries.map((item) => (

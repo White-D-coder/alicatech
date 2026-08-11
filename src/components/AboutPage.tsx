@@ -20,54 +20,43 @@ export const AboutPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Top Green Banner - Centered About Heading */}
-      <section
-  className="text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden bg-cover bg-center"
-  style={{ backgroundImage: "url('media-library-download-1786351951/man-using-soldering-iron-circuit-1.jpg')"}}
->
-  <div className="flex-1 flex items-center justify-center relative z-10">
-    <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
-      About
-    </h1>
-  </div>
-
-  <div className="pb-2 relative z-10">
-    <ChevronDown
-      size={22}
-      className="opacity-80 animate-bounce text-white"
-    />
-  </div>
-</section>
+      <section className="bg-[#355c31] text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden">
+        <div className="flex-1 flex items-center justify-center">
+          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center">
+            About Us
+          </h1>
+        </div>
+        <div className="pb-2">
+          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
+        </div>
+      </section>
 
       {/* 2. Arch Philosophy & Headquarters Section */}
-      <section className="py-20 lg:py-24 bg-white bg-grid-lines">
+      <section className="py-16 lg:py-20 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Image: Global Headquarters */}
             <div className="lg:col-span-6 space-y-3">
               <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src="/media-library-download-1786351951/O1.jpg"
+                  src="/PCB-Assembly-Ahmedabad.jpg"
                   alt="Alica Technologies Global Headquarters Ahmedabad"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="text-sm font-bold text-[#0d3b2e] pt-1">
-                Global Headquaters (Ahmedabad, Gujarat)
+                Global Headquarters (Ahmedabad, Gujarat)
               </p>
             </div>
 
             {/* Right Text Content */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-s font-bold text-gray-500 tracking-wider block">
-                Arch Philosophy
+              <span className="text-xs font-bold text-[#0d3b2e] tracking-wider block font-montserrat">
+                — Arch Philosophy
               </span>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight whitespace-nowrap">
-                About{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10">Alica Technologies</span>
-                  <span className="absolute left-0 right-0 bottom-[6%] h-[30%] bg-[#dce7f8] z-0" />
-                </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
+                About Alica Technologies
               </h2>
 
               <p className="text-gray-700 font-medium text-base sm:text-lg leading-relaxed">
@@ -88,17 +77,13 @@ export const AboutPage = () => {
       </section>
 
       {/* 3. Our Approach Section */}
-      <section className="py-20 lg:py-24 bg-[#fcfdfe] bg-grid-lines border-t border-gray-100">
+      <section className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
             {/* Left Content */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight whitespace-nowrap">
-                Our{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10">Approach</span>
-                  <span className="absolute left-0 right-0 bottom-[6%] h-[30%] bg-[#dce7f8] z-0" />
-                </span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
+                Our Approach
               </h2>
 
               <p className="text-gray-700 text-base font-medium leading-relaxed">
@@ -128,7 +113,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 1
               </div>
-              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
                 MAKE AN APPOINTMENT
               </span>
             </div>
@@ -137,7 +122,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 2
               </div>
-              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
                 BUSINESS CONSULTATION
               </span>
             </div>
@@ -146,7 +131,7 @@ export const AboutPage = () => {
               <div className="w-9 h-9 rounded-full border-2 border-gray-300 group-hover:border-[#006828] group-hover:bg-[#006828] group-hover:text-white font-bold text-gray-800 flex items-center justify-center text-sm shrink-0 transition-colors">
                 3
               </div>
-              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase">
+              <span className="text-xs sm:text-sm font-bold tracking-wider text-[#0d3b2e] uppercase font-montserrat">
                 BUSINESS ANALYTICS
               </span>
             </div>
@@ -167,18 +152,7 @@ export const AboutPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
-                <MessageSquare size={28} strokeWidth={1.5} />
-              </div>
-              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
-                <AnimatedCounter end={12} suffix="+" />
-              </span>
-              <span className="text-sm font-medium text-emerald-100">
-                Years of Experience
-              </span>
-            </div>
-            <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
                 <Compass size={28} strokeWidth={1.5} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
@@ -190,7 +164,19 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
+                <MessageSquare size={28} strokeWidth={1.5} />
+              </div>
+              <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
+                <AnimatedCounter end={12} suffix="+" />
+              </span>
+              <span className="text-sm font-medium text-emerald-100">
+                Years of Experience
+              </span>
+            </div>
+
+            <div className="flex flex-col items-center justify-center space-y-3 p-4">
+              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
                 <ShoppingCart size={28} strokeWidth={1.5} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
@@ -202,7 +188,7 @@ export const AboutPage = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center space-y-3 p-4">
-              <div className="w-14 h-14 flex items-center justify-center text-white mb-1">
+              <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center text-white mb-1">
                 <Route size={28} strokeWidth={1.5} />
               </div>
               <span className="text-4xl sm:text-5xl font-bold font-montserrat tracking-tight text-white">
@@ -216,12 +202,12 @@ export const AboutPage = () => {
         </div>
       </section>
 
-      {/* 5. Business Partners Section - Full-Height Rectangular Founder Image Frames */}
-      <section className="py-20 lg:py-24 bg-white bg-grid-lines">
+      {/* 5. Business Partners Section */}
+      <section className="py-16 lg:py-20 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-s font-bold text-gray-500 tracking-wider block">
-              A Deep Commitment to Diversity
+            <span className="text-xs font-bold text-[#0d3b2e] tracking-wider uppercase block font-montserrat">
+              A deep commitment to diversity
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight">
               Business Partners
