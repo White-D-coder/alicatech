@@ -205,185 +205,225 @@ export const ServicesPage = ({
       </section>
 
       {/* 2. Main Section: Persistently Sticky Left Sidebar + Right Scrolling Content */}
-      <section className="py-16 lg:py-24 bg-white bg-grid-lines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 relative">
-            {/* LEFT COLUMN WRAPPER */}
-            <div className="lg:col-span-4 relative">
-              {/* INNER STICKY CONTAINER */}
-              <div className="lg:sticky lg:top-28 space-y-8 pb-8">
-                {/* Quick Navigation Items */}
-                <div className="bg-[#f8faf9] rounded-[10px] p-2 space-y-1 border border-gray-200/80 shadow-xs">
-                  {currentConfig.quickNav.map((item) => (
-                    <button
-                      key={item.key}
-                      onClick={() => onNavigateService && onNavigateService(item.key)}
-                      className="w-full flex items-center justify-between px-5 py-4 text-sm font-bold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
-                    >
-                      <span>{item.label}</span>
-                      <span className="text-gray-400 font-bold">›</span>
-                    </button>
-                  ))}
-                </div>
+      {/* 2. Main Section: Sticky Left + Scrolling Right */}
+<section className="py-16 lg:py-24 bg-white bg-grid-lines">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
 
-                {/* Get a Free Quote Form Box */}
-                <div className="bg-[#f8faf9] rounded-[10px] p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
-                  <h3 className="text-xl font-bold text-[#0d3b2e] font-montserrat">
-                    Get a Free Quote
-                  </h3>
+      {/* LEFT COLUMN — STICKY */}
+      <div className="lg:col-span-4 lg:self-start">
+        <div className="lg:sticky lg:top-28 space-y-8">
 
-                  {submitted ? (
-                    <div className="py-6 text-center text-[#0d3b2e] font-bold text-sm">
-                      Thank you! We will get in touch shortly.
-                    </div>
-                  ) : (
-                    <form onSubmit={handleFormSubmit} className="space-y-4">
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none"
-                      />
+          {/* Quick Navigation */}
+          <div className="bg-[#f8faf9] rounded-[10px] p-2 space-y-1 border border-gray-200/80 shadow-xs">
+            {currentConfig.quickNav.map((item) => (
+              <button
+                key={item.key}
+                onClick={() =>
+                  onNavigateService && onNavigateService(item.key)
+                }
+                className="w-full flex items-center justify-between px-5 py-4 text-sm font-bold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
+              >
+                <span>{item.label}</span>
+                <span className="text-gray-400 font-bold">›</span>
+              </button>
+            ))}
+          </div>
 
-                      <input
-                        type="email"
-                        placeholder="Your Email Address"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none"
-                      />
+          {/* Get a Free Quote */}
+          <div className="bg-[#f8faf9] rounded-[10px] p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
+            <h3 className="text-xl font-bold text-[#0d3b2e] font-montserrat">
+              Get a Free Quote
+            </h3>
 
-                      <textarea
-                        placeholder="Your message"
-                        rows={4}
-                        required
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none resize-none"
-                      ></textarea>
-
-                      <button
-                        type="submit"
-                        className="w-full bg-[#184441] hover:bg-[#0f2e2c] text-white font-bold py-3.5 rounded-[6px] text-sm tracking-wider uppercase transition-all cursor-pointer shadow-sm"
-                      >
-                        get in touch
-                      </button>
-                    </form>
-                  )}
-                </div>
-
-                {/* Phone Call Box */}
-                <div className="bg-white rounded-[10px] p-6 border border-gray-200/80 shadow-xs flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-[#e8f7f0] text-[#006828] flex items-center justify-center shrink-0">
-                    <Phone size={22} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-gray-500 font-medium block">
-                      Get in touch
-                    </span>
-                    <a
-                      href="tel:+919727178787"
-                      className="text-lg font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
-                    >
-                      +91 97271 78787
-                    </a>
-                  </div>
-                </div>
+            {submitted ? (
+              <div className="py-6 text-center text-[#0d3b2e] font-bold text-sm">
+                Thank you! We will get in touch shortly.
               </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  required
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
+                  }
+                  className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Your Email Address"
+                  required
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      email: e.target.value,
+                    })
+                  }
+                  className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none"
+                />
+
+                <textarea
+                  placeholder="Your message"
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      message: e.target.value,
+                    })
+                  }
+                  className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none resize-none"
+                />
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#184441] hover:bg-[#0f2e2c] text-white font-bold py-3.5 rounded-[6px] text-sm tracking-wider uppercase transition-all cursor-pointer shadow-sm"
+                >
+                  get in touch
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Phone Call Box */}
+          <div className="bg-white rounded-[10px] p-6 border border-gray-200/80 shadow-xs flex items-center space-x-4">
+            <div className="w-12 h-12 rounded-full bg-[#e8f7f0] text-[#006828] flex items-center justify-center shrink-0">
+              <Phone size={22} />
             </div>
 
-            {/* RIGHT COLUMN: SCROLLING CONTENT */}
-            <div className="lg:col-span-8 space-y-12">
-              {/* Featured Banner Image */}
-              <div className="relative rounded-[10px] overflow-hidden shadow-2xl group">
-                <img
-                  src={currentConfig.image}
-                  alt={currentConfig.title}
-                  className="w-full h-[400px] sm:h-[480px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12 text-white">
-                  <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2">
-                    SERVICES —
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl font-bold font-montserrat mb-3 leading-tight">
-                    {currentConfig.title}
-                  </h2>
-                  <p className="text-gray-200 text-sm sm:text-base max-w-2xl leading-relaxed">
-                    {currentConfig.heroSubtitle}
-                  </p>
-                </div>
-              </div>
+            <div>
+              <span className="text-xs text-gray-500 font-medium block">
+                Get in touch
+              </span>
 
-              {/* 2 Paragraph Description */}
-              <div className="space-y-4 text-gray-700 text-base leading-relaxed">
-                <p>{currentConfig.p1}</p>
-                <p>{currentConfig.p2}</p>
-              </div>
-
-              {/* Benefits Checklist */}
-              <div className="pt-8 border-t border-b border-gray-200 py-10 space-y-8">
-                <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
-                  {currentConfig.benefitsTitle}
-                </h3>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                  {currentConfig.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <Check size={20} className="text-[#006828] shrink-0" strokeWidth={3} />
-                      <span className="text-gray-800 font-semibold text-sm sm:text-base">
-                        {benefit}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* FAQ Accordion */}
-              <div className="space-y-6">
-                <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
-                  Questions? You&apos;re covered.
-                </h3>
-
-                <div className="space-y-4">
-                  {currentConfig.faqs.map((faq, index) => {
-                    const isOpen = openFaq === index;
-                    return (
-                      <div
-                        key={index}
-                        className="rounded-[8px] overflow-hidden transition-all border border-gray-100"
-                      >
-                        <button
-                          onClick={() => setOpenFaq(isOpen ? null : index)}
-                          className={`w-full flex items-center justify-between p-5 text-left font-bold text-base transition-colors ${isOpen
-                              ? 'bg-[#184441] text-white'
-                              : 'bg-[#f8faf9] text-[#0d3b2e] hover:bg-gray-100'
-                            }`}
-                        >
-                          <span className="pr-4">{faq.q}</span>
-                          {isOpen ? (
-                            <ChevronUp size={20} className="shrink-0" />
-                          ) : (
-                            <ChevronDown size={20} className="shrink-0" />
-                          )}
-                        </button>
-
-                        {isOpen && (
-                          <div className="p-5 bg-white text-gray-600 text-sm leading-relaxed border-t border-gray-100">
-                            {faq.a}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <a
+                href="tel:+919727178787"
+                className="text-lg font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors font-montserrat"
+              >
+                +91 97271 78787
+              </a>
             </div>
           </div>
+
         </div>
-      </section>
+      </div>
+
+      {/* RIGHT COLUMN — NORMAL SCROLL */}
+      <div className="lg:col-span-8 space-y-12">
+
+        {/* Featured Banner Image */}
+        <div className="relative rounded-[10px] overflow-hidden shadow-2xl group">
+          <img
+            src={currentConfig.image}
+            alt={currentConfig.title}
+            className="w-full h-[400px] sm:h-[480px] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12 text-white">
+            <span className="text-xs font-bold tracking-widest uppercase text-gray-300 mb-2">
+              SERVICES —
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl font-bold font-montserrat mb-3 leading-tight">
+              {currentConfig.title}
+            </h2>
+
+            <p className="text-gray-200 text-sm sm:text-base max-w-2xl leading-relaxed">
+              {currentConfig.heroSubtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="space-y-4 text-gray-700 text-base leading-relaxed">
+          <p>{currentConfig.p1}</p>
+          <p>{currentConfig.p2}</p>
+        </div>
+
+        {/* Benefits Checklist */}
+        <div className="pt-8 border-t border-b border-gray-200 py-10 space-y-8">
+          <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
+            {currentConfig.benefitsTitle}
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+            {currentConfig.benefits.map((benefit, idx) => (
+              <div
+                key={idx}
+                className="flex items-center space-x-3"
+              >
+                <Check
+                  size={20}
+                  className="text-[#006828] shrink-0"
+                  strokeWidth={3}
+                />
+
+                <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                  {benefit}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FAQ Accordion */}
+        <div className="space-y-6">
+          <h3 className="text-3xl font-bold text-[#0d3b2e] font-montserrat">
+            Questions? You&apos;re covered.
+          </h3>
+
+          <div className="space-y-4">
+            {currentConfig.faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+
+              return (
+                <div
+                  key={index}
+                  className="rounded-[8px] overflow-hidden transition-all border border-gray-100"
+                >
+                  <button
+                    onClick={() =>
+                      setOpenFaq(isOpen ? null : index)
+                    }
+                    className={`w-full flex items-center justify-between p-5 text-left font-bold text-base transition-colors ${
+                      isOpen
+                        ? 'bg-[#184441] text-white'
+                        : 'bg-[#f8faf9] text-[#0d3b2e] hover:bg-gray-100'
+                    }`}
+                  >
+                    <span className="pr-4">{faq.q}</span>
+
+                    {isOpen ? (
+                      <ChevronUp size={20} className="shrink-0" />
+                    ) : (
+                      <ChevronDown size={20} className="shrink-0" />
+                    )}
+                  </button>
+
+                  {isOpen && (
+                    <div className="p-5 bg-white text-gray-600 text-sm leading-relaxed border-t border-gray-100">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

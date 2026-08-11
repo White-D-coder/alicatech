@@ -2,7 +2,7 @@ import { AnimatedCounter } from './AnimatedCounter';
 
 export const Testimonials = () => {
   return (
-    <section className="py-20 lg:py-28 bg-[#f8fafd] bg-grid-lines border-b border-gray-100">
+    <section className="py-20 lg:py-20 bg-[#ffffff] bg-grid-lines border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column Text & Key Statistics */}

@@ -25,15 +25,14 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-md shadow-md border-b border-gray-100 transition-all duration-300">
+    <header className="sticky top-0 z-[9999] w-full bg-white/98 backdrop-blur-md shadow-md border-b border-gray-100 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <button
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-2 focus:outline-none py-1 group cursor-pointer"
         >
-          <Logo height={24} className="sm:hidden" />
-          <Logo height={34} className="hidden sm:inline-block" />
+          <Logo height={24} className="hidden sm:inline-block" />
         </button>
 
         {/* Desktop Navigation Links */}
