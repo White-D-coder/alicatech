@@ -32,8 +32,8 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-2 focus:outline-none py-1 group cursor-pointer"
         >
-          <Logo height={44} className="sm:hidden" />
-          <Logo height={54} className="hidden sm:inline-block" />
+          <Logo height={24} className="sm:hidden" />
+          <Logo height={34} className="hidden sm:inline-block" />
         </button>
 
         {/* Desktop Navigation Links */}
