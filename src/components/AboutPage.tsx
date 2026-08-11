@@ -22,7 +22,7 @@ export const AboutPage = () => {
       {/* 1. Top Green Banner - Centered About Heading */}
       <section className="bg-[#355c31] text-white h-48 sm:h-56 flex flex-col items-center justify-between py-8 px-4 relative overflow-hidden">
         <div className="flex-1 flex items-center justify-center">
-          <h1 className="text-4xl sm:text-6xl font-extrabold font-montserrat tracking-wider text-white text-center">
+          <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center">
             About
           </h1>
         </div>
@@ -55,10 +55,11 @@ export const AboutPage = () => {
                 — ARCH PHILOSOPHY
               </span>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0d3b2e] tracking-tight font-montserrat leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat leading-tight whitespace-nowrap">
                 About{' '}
-                <span className="bg-[#e2ebf8] px-2 py-0.5 rounded-xs">
-                  Alica Technologies
+                <span className="relative inline-block">
+                  <span className="relative z-10">Alica Technologies</span>
+                  <span className="absolute left-0 right-0 bottom-[6%] h-[30%] bg-[#dce7f8] z-0" />
                 </span>
               </h2>
 
