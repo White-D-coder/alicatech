@@ -58,7 +58,7 @@ export const IndustriesPage = () => {
       <section className="relative bg-[#062630] text-white pt-28 sm:pt-36 pb-20 lg:pb-24 overflow-hidden text-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="media-library-download-1786351951/2151995237.jpg"
+            src="/2151589630.jpg"
             alt="Industrial Skyline Sunset"
             className="w-full h-full object-cover brightness-90 opacity-80"
           />
