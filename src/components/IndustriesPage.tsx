@@ -74,13 +74,22 @@ export const IndustriesPage = () => {
           </p>
 
           <div className="pt-6">
-            <ChevronDown size={24} className="opacity-85 animate-bounce mx-auto text-white" />
+            <button
+              onClick={() => {
+                const section = document.getElementById('industries-content');
+                section?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Scroll down to content"
+              className="focus:outline-none cursor-pointer group p-2 inline-block"
+            >
+              <ChevronDown size={24} className="opacity-85 animate-bounce mx-auto text-white group-hover:scale-125 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
 
       {/* 2. 8 Industry Cards Grid */}
-      <section className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
+      <section id="industries-content" className="py-16 lg:py-20 bg-[#fcfdfe] bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {industries.map((item) => (

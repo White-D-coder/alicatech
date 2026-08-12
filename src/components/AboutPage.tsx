@@ -31,15 +31,24 @@ export const AboutPage = () => {
         </div>
 
         <div className="pb-2 relative z-10">
-          <ChevronDown
-            size={22}
-            className="opacity-80 animate-bounce text-white"
-          />
+          <button
+            onClick={() => {
+              const section = document.getElementById('about-content');
+              section?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Scroll down to content"
+            className="focus:outline-none cursor-pointer group p-2 inline-block"
+          >
+            <ChevronDown
+              size={22}
+              className="opacity-80 animate-bounce text-white group-hover:scale-125 transition-transform"
+            />
+          </button>
         </div>
       </section>
 
       {/* 2. Arch Philosophy & Headquarters Section */}
-      <section className="py-16 lg:py-20 bg-white bg-grid-lines">
+      <section id="about-content" className="py-16 lg:py-20 bg-white bg-grid-lines">
   <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
     <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
