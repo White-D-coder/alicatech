@@ -1,4 +1,8 @@
-export const Hero = () => {
+interface HeroProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const Hero = ({ onNavigate }: HeroProps) => {
   return (
     <section className="relative bg-[#062b35] text-white pt-25 pb-16 sm:pt-16 sm:pb-24 lg:pt-35 lg:pb-32 overflow-visible">
       {/* Background Image Container */}
@@ -45,12 +49,12 @@ export const Hero = () => {
           {/* Action Buttons Row */}
           <div className="pt-4 flex flex-wrap items-center gap-8">
             {/* View Services Yellow Button */}
-            <a
-              href="#services"
+            <button
+              onClick={() => onNavigate ? onNavigate('service-smt') : (window.location.hash = '#services')}
               className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-base tracking-wide shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-montserrat cursor-pointer"
             >
               View Services
-            </a>
+            </button>
 
             {/* Get a quote / Phone Number Text on Right */}
             <div className="space-y-0.5">

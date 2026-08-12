@@ -1,5 +1,5 @@
 import { Logo } from './Logo';
-import { Mail, MapPin, ChevronUp } from 'lucide-react';
+import { Mail, MapPin, Clock, ChevronUp } from 'lucide-react';
 
 interface FooterProps {
   onNavigate?: (page: string) => void;
@@ -118,16 +118,21 @@ export const Footer = ({ onNavigate }: FooterProps) => {
               </div>
 
               {/* Timings & Phone */}
-              <div className="pl-9 space-y-1 pt-1">
-                <span className="text-xs text-emerald-200/70 block">
-                  Monday-Friday: 08am-9pm
-                </span>
-                <a
-                  href="tel:+919727178787"
-                  className="font-bold text-white text-sm hover:text-[#f4cf68] transition-colors block"
-                >
-                  +91 97271 78787
-                </a>
+              <div className="flex items-start gap-3.5">
+                <div className="p-1.5 rounded text-[#f4cf68] mt-0.5">
+                  <Clock size={20} strokeWidth={1.75} />
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-xs text-emerald-200/70 block">
+                    Monday-Friday: 08am-9pm
+                  </span>
+                  <a
+                    href="tel:+919727178787"
+                    className="font-bold text-white text-sm hover:text-[#f4cf68] transition-colors block"
+                  >
+                    +91 97271 78787
+                  </a>
+                </div>
               </div>
             </div>
           </div>
