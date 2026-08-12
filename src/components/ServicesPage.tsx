@@ -200,12 +200,21 @@ export const ServicesPage = ({
           <h1 className="text-3xl sm:text-5xl font-bold font-montserrat tracking-tight leading-tight max-w-4xl mx-auto">
             {currentConfig.title}
           </h1>
-          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
+          <button
+            onClick={() => {
+              const section = document.getElementById('services-content');
+              section?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Scroll down to content"
+            className="focus:outline-none cursor-pointer group p-2 inline-block"
+          >
+            <ChevronDown size={22} className="opacity-80 animate-bounce text-white group-hover:scale-125 transition-transform" />
+          </button>
         </div>
       </section>
 
       {/* 2. Main Section: Main Content first on mobile view, Left Sidebar after FAQ section on mobile view */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-white bg-grid-lines">
+      <section id="services-content" className="py-12 sm:py-16 lg:py-24 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
 

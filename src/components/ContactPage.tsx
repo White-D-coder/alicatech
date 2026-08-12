@@ -27,7 +27,6 @@ export const ContactPage = () => {
           <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-tight text-white">
             Contact Us
           </h1>
-          <ChevronDown size={22} className="opacity-80 animate-bounce text-white" />
         </div>
       </section>
 
