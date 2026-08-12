@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
 import { ChevronDown, Compass, MessageSquare, ShoppingCart, Route } from 'lucide-react';
-import { AnimatedCounter } from './AnimatedCounter';
+import { AnimatedCounter } from '../components/AnimatedCounter';
+
 
 export const AboutPage = () => {
+  useEffect(() => {
+    document.title = "About Us | Alica Technologies LLP";
+  }, []);
   const reviews = [
     {
       author: 'Kishan Changela',
@@ -19,9 +24,8 @@ export const AboutPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. Top Green Banner - Safe Top Padding for Sticky Header */}
       <section
-        className="text-white pt-28 sm:pt-36 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
+        className="text-white pt-12 sm:pt-16 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
       >
         <div className="flex-1 flex items-center justify-center relative z-10">

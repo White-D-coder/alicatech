@@ -1,25 +1,36 @@
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-interface HeaderProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
+export const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
+  // Derive currentPage from the route path
+  const pathname = location.pathname;
+  const currentPage = pathname === '/' ? 'home'
+    : pathname.startsWith('/blog') ? 'blogs'
+    : pathname.substring(1);
+
   const serviceDropdownItems = [
-    { name: 'SMT & THT PCB Assembly', page: 'service-smt' },
-    { name: 'Testing & Inspection', page: 'service-testing' },
-    { name: 'Turnkey Project Delivery', page: 'service-turnkey' },
-    { name: 'End-to-End Electronic Manufacturing', page: 'service-end-to-end' },
+    { name: 'SMT & THT PCB Assembly', page: 'smt-tht-pcb-assembly' },
+    { name: 'Testing & Inspection', page: 'testing-inspection' },
+    { name: 'Turnkey Project Delivery', page: 'turnkey-project-delivery' },
+    { name: 'End-to-End Electronic Manufacturing', page: 'end-to-end-electronic-manufacturing' },
   ];
 
+  const isServicesActive = [
+    'smt-tht-pcb-assembly',
+    'testing-inspection',
+    'turnkey-project-delivery',
+    'end-to-end-electronic-manufacturing'
+  ].includes(currentPage);
+
   const handleNavClick = (page: string) => {
-    onNavigate(page);
+    navigate(page === 'home' ? '/' : `/${page}`);
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
   };
@@ -89,9 +100,9 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
             onMouseLeave={() => setServicesDropdownOpen(false)}
           >
             <button
-              onClick={() => handleNavClick('service-smt')}
+              onClick={() => handleNavClick('smt-tht-pcb-assembly')}
               className={`relative py-2 text-[15px] font-bold transition-colors duration-200 inline-flex items-center gap-1 cursor-pointer ${
-                currentPage.startsWith('service') ? 'text-[#006828]' : 'text-gray-900 hover:text-[#006828]'
+                isServicesActive ? 'text-[#006828]' : 'text-gray-900 hover:text-[#006828]'
               }`}
             >
               <span>Services</span>
@@ -103,7 +114,7 @@ export const Header = ({ currentPage, onNavigate }: HeaderProps) => {
               />
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#006828] transition-all duration-300 ${
-                  currentPage.startsWith('service') ? 'w-full' : 'w-0 group-hover:w-full'
+                  isServicesActive ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               />
             </button>

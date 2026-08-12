@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 export const IndustriesPage = () => {
+  useEffect(() => {
+    document.title = "Industries We Serve | Alica Technologies LLP";
+  }, []);
   const industries = [
     {
       id: 1,

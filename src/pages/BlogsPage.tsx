@@ -1,0 +1,230 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  getPosts, getFeaturedImageUrl, getPostCategories,
+  stripHtml, formatDate, readingTime, decodeEntities, POSTS_PER_PAGE, type WPPost,
+} from '../lib/wpi';
+
+// ─── Skeleton card ────────────────────────────────────────────────────────────
+
+const CardSkeleton = () => (
+  <div className="bg-white rounded-[10px] border border-gray-100 overflow-hidden flex flex-col animate-pulse">
+    <div className="aspect-[16/9] bg-gray-200 rounded-t-[10px]" />
+    <div className="p-6 flex-1 space-y-3">
+      <div className="h-3 bg-gray-200 rounded w-1/4" />
+      <div className="h-5 bg-gray-200 rounded w-full" />
+      <div className="h-5 bg-gray-200 rounded w-3/4" />
+      <div className="h-3 bg-gray-200 rounded w-full" />
+      <div className="h-3 bg-gray-200 rounded w-2/3" />
+    </div>
+  </div>
+);
+
+// ─── Post card ────────────────────────────────────────────────────────────────
+
+const PostCard = ({ post, onClick }: { post: WPPost; onClick: () => void }) => {
+  const imageUrl = getFeaturedImageUrl(post, 'liquid-style16-lb');
+  const categories = getPostCategories(post);
+  const title = stripHtml(post.title.rendered);
+  const excerpt = stripHtml(post.excerpt.rendered).slice(0, 140) + '…';
+  const rt = readingTime(post.excerpt.rendered);
+
+  return (
+    <article
+      onClick={onClick}
+      className="group bg-white rounded-[10px] border border-gray-100 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer"
+    >
+      {/* Image */}
+      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 rounded-t-[10px]">
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={title}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#0d3b2e] to-[#006828] flex items-center justify-center">
+            <span className="text-white/20 text-5xl font-bold font-montserrat">A</span>
+          </div>
+        )}
+        {categories[0] && (
+          <span className="absolute top-3 left-3 bg-[#006828] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+            {decodeEntities(categories[0].name)}
+          </span>
+        )}
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-col flex-1 p-6 space-y-2">
+        <div className="flex items-center gap-2 text-xs text-gray-400 flex-wrap">
+          <span>{formatDate(post.date)}</span>
+          <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
+          <span>{rt}</span>
+        </div>
+        <h2 className="text-lg font-bold text-[#0d3b2e] group-hover:text-[#006828] transition-colors leading-snug line-clamp-2 font-montserrat">
+          {title}
+        </h2>
+        <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-1">{excerpt}</p>
+        <div className="pt-3">
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[#0d3b2e] group-hover:text-[#006828] transition-colors group/link">
+            <span className="w-6 h-0.5 bg-current group-hover/link:w-8 transition-all duration-200" />
+            READ ARTICLE
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+// ─── Main page ────────────────────────────────────────────────────────────────
+
+export const BlogsPage = () => {
+  const navigate = useNavigate();
+  const [posts, setPosts] = useState<WPPost[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);       // initial load
+  const [loadingMore, setLoadingMore] = useState(false); // load more spinner
+  const [error, setError] = useState<string | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
+  // Update SEO title
+  useEffect(() => {
+    document.title = 'Latest Blogs & News | Alica Technologies LLP';
+  }, []);
+
+  // Fetch a given page and either set or append
+  const fetchPage = useCallback(async (pageNum: number, append: boolean) => {
+    abortRef.current?.abort();
+    const ctrl = new AbortController();
+    abortRef.current = ctrl;
+
+    if (append) setLoadingMore(true);
+    else { setLoading(true); setError(null); }
+
+    try {
+      const { posts: data, totalPages: tp, total: t } = await getPosts(pageNum, POSTS_PER_PAGE, ctrl.signal);
+      if (ctrl.signal.aborted) return;
+      setPosts((prev) => (append ? [...prev, ...data] : data));
+      setTotalPages(tp);
+      setTotal(t);
+      setPage(pageNum);
+    } catch (err) {
+      if ((err as Error).name === 'AbortError') return;
+      setError('Unable to load posts. Please try again.');
+    } finally {
+      if (!ctrl.signal.aborted) {
+        setLoading(false);
+        setLoadingMore(false);
+      }
+    }
+  }, []);
+
+  // Initial load
+  useEffect(() => {
+    fetchPage(1, false);
+    return () => abortRef.current?.abort();
+  }, [fetchPage]);
+
+  const hasMore = page < totalPages;
+
+  return (
+    <div className="bg-white min-h-screen">
+      <section
+        className="relative pt-12 sm:pt-16 pb-16 px-4 flex flex-col items-center justify-between overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        <div className="flex-1 flex items-center justify-center relative z-10">
+          <div className="text-center space-y-3">
+            <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white">
+              Blogs &amp; Insights
+            </h1>
+            <p className="text-white/80 text-base sm:text-lg max-w-xl mx-auto font-normal">
+              Expert perspectives on PCB assembly, EMS, and electronic manufacturing.
+            </p>
+            {!loading && total > 0 && (
+              <p className="text-white/60 text-sm">{total} articles published</p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Grid */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {error ? (
+            <div className="text-center py-20">
+              <p className="text-gray-500 mb-6">{error}</p>
+              <button
+                onClick={() => fetchPage(1, false)}
+                className="bg-[#006828] text-white px-6 py-2.5 rounded-[6px] text-sm font-bold hover:bg-[#0d3b2e] transition-colors"
+              >
+                Retry
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {loading
+                  ? Array.from({ length: POSTS_PER_PAGE }).map((_, i) => <CardSkeleton key={i} />)
+                  : posts.map((post) => (
+                      <PostCard
+                        key={post.id}
+                        post={post}
+                        onClick={() => navigate(`/blog/${post.slug}`)}
+                      />
+                    ))}
+
+                {/* Inline skeleton rows while loading more */}
+                {loadingMore &&
+                  Array.from({ length: POSTS_PER_PAGE }).map((_, i) => <CardSkeleton key={`more-${i}`} />)}
+              </div>
+
+              {/* Load More */}
+              {!loading && hasMore && (
+                <div className="mt-14 flex flex-col items-center gap-3">
+                  <button
+                    onClick={() => fetchPage(page + 1, true)}
+                    disabled={loadingMore}
+                    className="inline-flex items-center gap-3 bg-[#0d3b2e] hover:bg-[#006828] disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold px-10 py-3.5 rounded-[6px] text-sm tracking-wide transition-all duration-200 shadow-sm hover:shadow-lg"
+                  >
+                    {loadingMore ? (
+                      <>
+                        <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                        </svg>
+                        Loading…
+                      </>
+                    ) : (
+                      <>
+                        Load More Articles
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 5v14M5 12l7 7 7-7" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                  <p className="text-xs text-gray-400">
+                    Showing {posts.length} of {total} articles
+                  </p>
+                </div>
+              )}
+
+              {/* All loaded */}
+              {!loading && !hasMore && posts.length > 0 && (
+                <p className="mt-12 text-center text-xs text-gray-400">
+                  You've read it all — {total} articles total.
+                </p>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+};

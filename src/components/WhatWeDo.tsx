@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ServiceCardProps {
   id: number;
@@ -67,11 +68,8 @@ const ServiceCard = ({
   );
 };
 
-interface WhatWeDoProps {
-  onNavigate?: (page: string) => void;
-}
-
-export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
+export const WhatWeDo = () => {
+  const navigate = useNavigate();
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const services = [
@@ -81,7 +79,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
       line1: 'End-to-End Electronic',
       line2: 'Manufacturing',
       iconSrc: '/icon-1.svg',
-      pageKey: 'service-end-to-end',
+      pageKey: 'end-to-end-electronic-manufacturing',
     },
     {
       id: 2,
@@ -89,7 +87,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
       line1: 'SMT & THT PCB',
       line2: 'Assembly',
       iconSrc: '/icon-2_1.svg',
-      pageKey: 'service-smt',
+      pageKey: 'smt-tht-pcb-assembly',
     },
     {
       id: 3,
@@ -97,7 +95,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
       line1: 'Testing & Inspection',
       line2: '(AOI, X-Ray)',
       iconSrc: '/icon-3_1.svg',
-      pageKey: 'service-testing',
+      pageKey: 'testing-inspection',
     },
     {
       id: 4,
@@ -105,7 +103,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
       line1: 'Turnkey Project',
       line2: 'Delivery',
       iconSrc: '/icon-4.svg',
-      pageKey: 'service-turnkey',
+      pageKey: 'turnkey-project-delivery',
     },
   ];
 
@@ -136,7 +134,7 @@ export const WhatWeDo = ({ onNavigate }: WhatWeDoProps) => {
               isActive={activeCard === service.id}
               onMouseEnter={() => setActiveCard(service.id)}
               onMouseLeave={() => setActiveCard(null)}
-              onClick={() => onNavigate?.(service.pageKey)}
+              onClick={() => navigate(`/${service.pageKey}`)}
             />
           ))}
         </div>

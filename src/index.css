@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 
 @layer base {
   :root {
@@ -12,7 +14,7 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -25,7 +27,7 @@
     padding: 0;
     background-color: #ffffff;
     color: #1e293b;
-    overflow-x: hidden;
+    overflow-x: clip;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -86,3 +88,39 @@
   width: max-content;
   animation: marquee 16s linear infinite;
 }
+
+/* ── WordPress content image fixes ── */
+.wp-content img,
+.wp-content figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin: 1.5rem auto;
+}
+
+.wp-content figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.wp-content figcaption,
+.wp-content .wp-caption-text {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Ensure caption images inside wp-caption don't double-margin */
+.wp-content .wp-caption img {
+  margin-bottom: 0;
+}
+
+/* Inline tip/callout divs that WP generates */
+.wp-content div[style*="background"] {
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+

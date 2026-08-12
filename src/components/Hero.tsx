@@ -1,10 +1,9 @@
-interface HeroProps {
-  onNavigate?: (page: string) => void;
-}
+import { useNavigate } from 'react-router-dom';
 
-export const Hero = ({ onNavigate }: HeroProps) => {
+export const Hero = () => {
+  const navigate = useNavigate();
   return (
-    <section className="relative bg-[#062b35] text-white pt-25 pb-16 sm:pt-16 sm:pb-24 lg:pt-35 lg:pb-32 overflow-visible">
+    <section className="relative bg-[#062b35] text-white pt-10 pb-12 sm:pt-14 sm:pb-20 lg:pt-0 lg:pb-0 lg:min-h-[80vh] lg:flex lg:items-center overflow-visible">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -16,8 +15,8 @@ export const Hero = ({ onNavigate }: HeroProps) => {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-6 pt-12 pb-12 sm:pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-3xl space-y-6 pt-12 pb-12 sm:pb-16 lg:pt-24 lg:pb-24">
           {/* Main Title - Partner on its own line directly under Your EMS */}
           <h1 className="text-5xl sm:text-6xl lg:text-[68px] font-bold font-montserrat tracking-tight leading-[1.1] text-white drop-shadow-md">
             <span className="block">Your EMS</span>
@@ -50,7 +49,7 @@ export const Hero = ({ onNavigate }: HeroProps) => {
           <div className="pt-4 flex flex-wrap items-center gap-8">
             {/* View Services Yellow Button */}
             <button
-              onClick={() => onNavigate ? onNavigate('service-smt') : (window.location.hash = '#services')}
+              onClick={() => navigate('/smt-tht-pcb-assembly')}
               className="bg-[#ffc82e] hover:bg-[#ffd34f] text-gray-950 font-bold px-8 py-3.5 rounded-[6px] text-base tracking-wide shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-montserrat cursor-pointer"
             >
               View Services

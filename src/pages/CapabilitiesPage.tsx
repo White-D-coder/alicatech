@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { Check } from 'lucide-react';
 
 export const CapabilitiesPage = () => {
+  useEffect(() => {
+    document.title = "Our Manufacturing Capabilities | Alica Technologies LLP";
+  }, []);
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Hero Section with Big Yellow Overlapping Title "Manufacturing Capabilities" */}

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Mail, Phone, Check } from 'lucide-react';
 
 export const ContactPage = () => {
+  useEffect(() => {
+    document.title = "Contact Us | Alica Technologies LLP";
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,14 +12,36 @@ export const ContactPage = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          formType: 'contact',
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setError(data.error || 'Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -124,11 +149,16 @@ export const ContactPage = () => {
                     ></textarea>
                   </div>
 
+                  {error && (
+                    <p className="text-red-600 text-xs font-semibold">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-[#ffc82e] hover:bg-[#f5b918] text-gray-950 font-bold py-4 rounded-[6px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat uppercase tracking-wider cursor-pointer"
+                    disabled={submitting}
+                    className="w-full bg-[#ffc82e] hover:bg-[#f5b918] disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed text-gray-950 font-bold py-4 rounded-[6px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat uppercase tracking-wider cursor-pointer"
                   >
-                    get in touch
+                    {submitting ? 'sending...' : 'get in touch'}
                   </button>
                 </form>
               )}

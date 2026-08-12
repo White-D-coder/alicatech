@@ -11,18 +11,41 @@ export const EnquiryForm = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.agreed) {
       alert('Please agree to the terms of service.');
       return;
     }
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '', agreed: false });
-    }, 4000);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          formType: 'enquiry',
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', message: '', agreed: false });
+      } else {
+        setError(data.error || 'Failed to submit enquiry. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -108,12 +131,17 @@ export const EnquiryForm = () => {
             </label>
           </div>
 
+          {error && (
+            <p className="text-red-600 text-xs font-semibold">{error}</p>
+          )}
+
           {/* Submit CTA Button */}
           <button
             type="submit"
-            className="w-full bg-[#ffc82e] hover:bg-[#f5b918] text-gray-950 font-bold py-3.5 rounded-[8px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat"
+            disabled={submitting}
+            className="w-full bg-[#ffc82e] hover:bg-[#f5b918] disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed text-gray-950 font-bold py-3.5 rounded-[8px] text-base shadow-md hover:shadow-lg transition-all transform active:scale-98 focus:outline-none font-montserrat cursor-pointer"
           >
-            talk to us
+            {submitting ? 'sending...' : 'talk to us'}
           </button>
         </form>
       )}

@@ -1,38 +1,72 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Check, Phone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export interface ServicesPageProps {
-  serviceType?: 'service-smt' | 'service-testing' | 'service-turnkey' | 'service-end-to-end';
-  onNavigateService?: (serviceKey: string) => void;
+  serviceType?: 'smt-tht-pcb-assembly' | 'testing-inspection' | 'turnkey-project-delivery' | 'end-to-end-electronic-manufacturing';
 }
 
 export const ServicesPage = ({
-  serviceType = 'service-smt',
-  onNavigateService,
+  serviceType = 'smt-tht-pcb-assembly',
 }: ServicesPageProps) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const titles = {
+      'smt-tht-pcb-assembly': "SMT & THT PCB Assembly Services | Alica Technologies LLP",
+      'testing-inspection': "Testing & Inspection Services | Alica Technologies LLP",
+      'turnkey-project-delivery': "Turnkey Project Delivery | Alica Technologies LLP",
+      'end-to-end-electronic-manufacturing': "End-to-End Electronic Manufacturing | Alica Technologies LLP",
+    };
+    document.title = titles[serviceType] || "Services | Alica Technologies LLP";
+  }, [serviceType]);
+
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          formType: 'quote',
+          serviceName: currentConfig.title,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setError(data.error || 'Failed to submit request. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   // Data config for all 4 Service Pages matching exact uploaded screenshots
   const servicesConfig = {
-    'service-smt': {
+    'smt-tht-pcb-assembly': {
       title: 'SMT & THT PCB Assembly',
       heroSubtitle: 'High-precision surface mount and thru-hole PCB assembly for reliable electronic products.',
       image: '/2151575719.jpg',
       quickNav: [
-        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
-        { label: 'Testing & Inspection', key: 'service-testing' },
-        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+        { label: 'End-to-End Electronic Manufacturing', key: 'end-to-end-electronic-manufacturing' },
+        { label: 'Testing & Inspection', key: 'testing-inspection' },
+        { label: 'Turnkey Project Delivery', key: 'turnkey-project-delivery' },
       ],
       p1: 'Our SMT and Thru-Hole PCB assembly services are designed to meet high accuracy, repeatability, and quality requirements. Alica\'s production lines are equipped to handle complex layouts, fine-pitch components, and mixed-technology assemblies.',
       p2: 'Automated stencil printing, high-speed pick-and-place machines, and controlled reflow processes ensure consistent assembly quality across all builds.',
@@ -68,14 +102,14 @@ export const ServicesPage = ({
       ],
     },
 
-    'service-testing': {
+    'testing-inspection': {
       title: 'Testing & Inspection',
       heroSubtitle: 'Advanced inspection and testing to ensure quality, reliability, and compliance.',
       image: '/2151615028.jpg',
       quickNav: [
-        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
-        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
-        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+        { label: 'End-to-End Electronic Manufacturing', key: 'end-to-end-electronic-manufacturing' },
+        { label: 'SMT & THT PCB Assembly', key: 'smt-tht-pcb-assembly' },
+        { label: 'Turnkey Project Delivery', key: 'turnkey-project-delivery' },
       ],
       p1: 'Quality control is integrated into every stage of our manufacturing process. Our testing and inspection services are designed to identify defects early, reduce rework, and ensure compliance with defined specifications.',
       p2: 'We use industry-leading inspection systems to verify solder quality, component placement, and functional performance.',
@@ -107,14 +141,14 @@ export const ServicesPage = ({
       ],
     },
 
-    'service-turnkey': {
+    'turnkey-project-delivery': {
       title: 'Turnkey Project Delivery',
       heroSubtitle: 'Complete electronic manufacturing solutions managed under one partner.',
       image: '/procurement-manager-reviewing-manufacturing-contract-factory.jpg',
       quickNav: [
-        { label: 'End-to-End Electronic Manufacturing', key: 'service-end-to-end' },
-        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
-        { label: 'Testing & Inspection', key: 'service-testing' },
+        { label: 'End-to-End Electronic Manufacturing', key: 'end-to-end-electronic-manufacturing' },
+        { label: 'SMT & THT PCB Assembly', key: 'smt-tht-pcb-assembly' },
+        { label: 'Testing & Inspection', key: 'testing-inspection' },
       ],
       p1: 'Our turnkey project delivery services simplify electronic manufacturing by managing the complete process from component procurement to final delivery. This approach reduces coordination effort, shortens lead times, and ensures consistent quality.',
       p2: 'Turnkey manufacturing is ideal for clients looking for a single, accountable EMS partner.',
@@ -150,14 +184,14 @@ export const ServicesPage = ({
       ],
     },
 
-    'service-end-to-end': {
+    'end-to-end-electronic-manufacturing': {
       title: 'End-to-End Electronic Manufacturing',
       heroSubtitle: 'Complete electronic manufacturing services supporting your product from prototype to production.',
       image: '/PCB-assembly-partner-in-Ahmedabad.jpg',
       quickNav: [
-        { label: 'SMT & THT PCB Assembly', key: 'service-smt' },
-        { label: 'Testing & Inspection', key: 'service-testing' },
-        { label: 'Turnkey Project Delivery', key: 'service-turnkey' },
+        { label: 'SMT & THT PCB Assembly', key: 'smt-tht-pcb-assembly' },
+        { label: 'Testing & Inspection', key: 'testing-inspection' },
+        { label: 'Turnkey Project Delivery', key: 'turnkey-project-delivery' },
       ],
       p1: 'Alica Technologies LLP provides comprehensive electronic manufacturing services covering every stage of the product lifecycle. Our end-to-end approach ensures controlled processes, consistent quality, and dependable delivery for electronic assemblies.',
       p2: 'We combine advanced manufacturing equipment, trained technical teams, and IPC-recommended operating procedures to support reliable and repeatable production outcomes.',
@@ -190,7 +224,7 @@ export const ServicesPage = ({
     },
   };
 
-  const currentConfig = servicesConfig[serviceType] || servicesConfig['service-smt'];
+  const currentConfig = servicesConfig[serviceType] || servicesConfig['smt-tht-pcb-assembly'];
 
   return (
     <div className="bg-white min-h-screen">
@@ -228,7 +262,7 @@ export const ServicesPage = ({
               <button
                 key={item.key}
                 onClick={() =>
-                  onNavigateService && onNavigateService(item.key)
+                  navigate(`/${item.key}`)
                 }
                 className="w-full flex items-center justify-between px-5 py-4 text-sm font-bold text-[#0d3b2e] hover:bg-white hover:shadow-xs rounded-[8px] transition-all text-left cursor-pointer"
               >
@@ -292,11 +326,16 @@ export const ServicesPage = ({
                   className="w-full bg-white border border-gray-200 px-4 py-3 rounded-[6px] text-sm text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-[#184441] focus:outline-none resize-none"
                 />
 
+                {error && (
+                  <p className="text-red-600 text-xs font-semibold">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-[#184441] hover:bg-[#0f2e2c] text-white font-bold py-3.5 rounded-[6px] text-sm tracking-wider uppercase transition-all cursor-pointer shadow-sm"
+                  disabled={submitting}
+                  className="w-full bg-[#184441] hover:bg-[#0f2e2c] disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-[6px] text-sm tracking-wider uppercase transition-all cursor-pointer shadow-sm"
                 >
-                  get in touch
+                  {submitting ? 'sending...' : 'get in touch'}
                 </button>
               </form>
             )}

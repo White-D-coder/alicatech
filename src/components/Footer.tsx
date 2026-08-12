@@ -1,21 +1,15 @@
 import { Logo } from './Logo';
 import { Mail, MapPin, Clock, ChevronUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-interface FooterProps {
-  onNavigate?: (page: string) => void;
-}
-
-export const Footer = ({ onNavigate }: FooterProps) => {
+export const Footer = () => {
+  const navigate = useNavigate();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleLinkClick = (page: string) => {
-    if (onNavigate) {
-      onNavigate(page);
-    } else {
-      scrollToTop();
-    }
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
   return (
@@ -146,7 +140,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
             <ul className="space-y-3.5 text-sm text-emerald-100/80 font-normal">
               <li>
                 <button
-                  onClick={() => handleLinkClick('service-smt')}
+                  onClick={() => handleLinkClick('smt-tht-pcb-assembly')}
                   className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
                 >
                   SMT & THT PCB Assembly
@@ -154,7 +148,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
               </li>
               <li>
                 <button
-                  onClick={() => handleLinkClick('service-testing')}
+                  onClick={() => handleLinkClick('testing-inspection')}
                   className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
                 >
                   Testing & Inspection
@@ -162,7 +156,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
               </li>
               <li>
                 <button
-                  onClick={() => handleLinkClick('service-turnkey')}
+                  onClick={() => handleLinkClick('turnkey-project-delivery')}
                   className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
                 >
                   Turnkey Project Delivery
@@ -170,7 +164,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
               </li>
               <li>
                 <button
-                  onClick={() => handleLinkClick('service-end-to-end')}
+                  onClick={() => handleLinkClick('end-to-end-electronic-manufacturing')}
                   className="hover:text-[#f4cf68] transition-colors text-left cursor-pointer"
                 >
                   End-to-End Electronic Manufacturing
@@ -199,7 +193,7 @@ export const Footer = ({ onNavigate }: FooterProps) => {
             <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
               Press media
             </button>
-            <button onClick={() => handleLinkClick('about')} className="hover:text-white transition-colors cursor-pointer">
+            <button onClick={() => handleLinkClick('blogs')} className="hover:text-white transition-colors cursor-pointer">
               Our Blog
             </button>
           </div>
