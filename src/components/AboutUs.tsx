@@ -2,11 +2,11 @@ import { EnquiryForm } from './EnquiryForm';
 
 export const AboutUs = () => {
   return (
-    <section id="about-us" className="relative bg-[#ffffff] pb-10 lg:pb-25 bg-grid-lines overflow-visible">
+    <section id="about-us" className="relative bg-[#ffffff] pt-16 pb-0 lg:pt-20 lg:pb-0 bg-grid-lines overflow-visible">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           {/* Left Column Content */}
-          <div className="lg:col-span-7 space-y-6 pt-16 lg:pt-20">
+          <div className="lg:col-span-7 space-y-6">
             <span className="text-[#0d3b2e] font-bold text-sm tracking-wider block">
               About Us
             </span>
@@ -21,7 +21,7 @@ export const AboutUs = () => {
           </div>
 
           {/* Right Column: Enquiry Form Box (Positioned in About Us, pulled up by -48px so ONLY 'send a message' overlays the Hero banner above) */}
-          <div className="lg:col-span-5 relative -mt-10 lg:-mt-18 z-30 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 relative -mt-24 lg:-mt-32 z-30 flex justify-center lg:justify-end">
             <EnquiryForm />
           </div>
         </div>

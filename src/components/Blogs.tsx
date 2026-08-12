@@ -116,10 +116,10 @@ export const Blogs = () => {
   }, []);
 
   return (
-    <section id="blog" className="py-20 lg:py-20 bg-white bg-grid-lines">
+    <section id="blog" className="py-12 bg-white bg-grid-lines">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto mb-10 space-y-4">
+        <div className="max-w-3xl mx-auto mb-10 space-y-4 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat">
             Latest Insights
           </h2>

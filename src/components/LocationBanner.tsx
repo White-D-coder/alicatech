@@ -1,6 +1,6 @@
 export const LocationBanner = () => {
   return (
-    <section className="relative bg-[#3B6932D4] text-white py-10 lg:py-20 overflow-hidden">
+    <section className="relative bg-[#3B6932D4] text-white py-16 lg:py-20 overflow-hidden">
       {/* Background Circuit Overlay Artwork */}
       <div className="absolute inset-0 z-0 opacity-20 bg-cover bg-center mix-blend-overlay">
         <img

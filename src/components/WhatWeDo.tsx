@@ -108,10 +108,10 @@ export const WhatWeDo = () => {
   ];
 
   return (
-    <section id="services" className="bg-white bg-grid-lines">
-      <div className="pt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="pt-16 pb-0 lg:pt-20 lg:pb-0 bg-white bg-grid-lines">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto mb-8 sm:mb-12 space-y-4">
+        <div className="max-w-3xl mx-auto mb-8 sm:mb-12 space-y-4 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] tracking-tight font-montserrat">
             What We Do
           </h2>

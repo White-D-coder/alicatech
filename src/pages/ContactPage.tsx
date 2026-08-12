@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Mail, Phone, Check } from 'lucide-react';
+import { submitContactForm7 } from '../lib/contactForm7';
 
 export const ContactPage = () => {
   useEffect(() => {
@@ -20,25 +21,15 @@ export const ContactPage = () => {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          formType: 'contact',
-        }),
+      await submitContactForm7({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
       });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setError(data.error || 'Failed to send message. Please try again.');
-      }
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
     } catch (err) {
-      setError('An error occurred. Please try again later.');
+      setError(err instanceof Error ? err.message : 'An error occurred. Please try again later.');
     } finally {
       setSubmitting(false);
     }

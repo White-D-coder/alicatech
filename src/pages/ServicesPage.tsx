@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Check, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { submitContactForm7 } from '../lib/contactForm7';
 
 export interface ServicesPageProps {
   serviceType?: 'smt-tht-pcb-assembly' | 'testing-inspection' | 'turnkey-project-delivery' | 'end-to-end-electronic-manufacturing';
@@ -32,26 +33,15 @@ export const ServicesPage = ({
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          formType: 'quote',
-          serviceName: currentConfig.title,
-        }),
+      await submitContactForm7({
+        name: formData.name,
+        email: formData.email,
+        message: `Service: ${currentConfig.title}\n\n${formData.message}`,
       });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setError(data.error || 'Failed to submit request. Please try again.');
-      }
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
     } catch (err) {
-      setError('An error occurred. Please try again later.');
+      setError(err instanceof Error ? err.message : 'An error occurred. Please try again later.');
     } finally {
       setSubmitting(false);
     }
@@ -253,8 +243,8 @@ export const ServicesPage = ({
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
 
       {/* LEFT COLUMN — STICKY */}
-      <div className="lg:col-span-4 lg:self-start">
-        <div className="lg:sticky lg:top-28 space-y-8">
+      <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+        <div className="space-y-8">
 
           {/* Quick Navigation */}
           <div className="bg-[#f8faf9] rounded-[10px] p-2 space-y-1 border border-gray-200/80 shadow-xs">

@@ -2,7 +2,7 @@ import { AnimatedCounter } from './AnimatedCounter';
 
 export const Testimonials = () => {
   return (
-    <section className="lg:py-20 bg-[#ffffff] bg-grid-lines border-b border-gray-100">
+    <section className="py-14 bg-[#ffffff] bg-grid-lines border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column Text & Key Statistics */}
@@ -53,7 +53,7 @@ export const Testimonials = () => {
           </div>
 
           {/* Right Column Green Testimonial Card */}
-          <div className="lg:col-span-6 pb-10">
+          <div className="lg:col-span-6">
             <div className="bg-[#355c31] text-white p-8 sm:p-12 shadow-2xl rounded-[10px] relative border border-emerald-800/40 space-y-6">
               <p className="text-lg sm:text-xl font-normal leading-relaxed text-emerald-50">
                 &ldquo;Alica Technologies provided high-quality PCB assembly services and maintained strong quality control throughout our project. Their experienced team, careful inspection process, and attention to detail helped deliver reliable electronic products that met our requirements. We were confident in the quality of the final PCB assembly.&rdquo;

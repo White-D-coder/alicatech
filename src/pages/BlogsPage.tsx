@@ -99,10 +99,37 @@ export const BlogsPage = () => {
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
+  const readableSlug = (categorySlug || tagSlug || '')
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  const bannerName = activeFilter ? decodeEntities(activeFilter.name) : readableSlug;
+  const bannerTitle = categorySlug
+    ? `${bannerName || 'Category'} Articles`
+    : tagSlug
+      ? `Articles Tagged ${bannerName ? `#${bannerName}` : ''}`.trim()
+      : 'Blogs & Insights';
+  const bannerDescription = categorySlug
+    ? `Explore expert perspectives and updates in ${bannerName || 'this category'}.`
+    : tagSlug
+      ? `Browse articles connected to ${bannerName ? `#${bannerName}` : 'this topic'}.`
+      : 'Expert perspectives on PCB assembly, EMS, and electronic manufacturing.';
+  const articleCountLabel = activeFilter
+    ? `${total} ${activeFilter.type === 'category' ? 'category' : 'tagged'} articles`
+    : `${total} articles published`;
+
   // Update SEO title
   useEffect(() => {
-    document.title = 'Latest Blogs & News | Alica Technologies LLP';
-  }, []);
+    if (activeFilter) {
+      document.title = `${decodeEntities(activeFilter.name)} Articles | Alica Technologies LLP`;
+    } else if (categorySlug || tagSlug) {
+      document.title = `${readableSlug || 'Articles'} | Alica Technologies LLP`;
+    } else {
+      document.title = 'Latest Blogs & News | Alica Technologies LLP';
+    }
+  }, [activeFilter, categorySlug, tagSlug, readableSlug]);
 
   // Resolve category/tag slug to ID & Name
   useEffect(() => {
@@ -120,7 +147,7 @@ export const BlogsPage = () => {
             setError('Category not found');
             setLoading(false);
           }
-        } catch (err) {
+        } catch {
           if (active) {
             setError('Error loading category details');
             setLoading(false);
@@ -138,7 +165,7 @@ export const BlogsPage = () => {
             setError('Tag not found');
             setLoading(false);
           }
-        } catch (err) {
+        } catch {
           if (active) {
             setError('Error loading tag details');
             setLoading(false);
@@ -221,41 +248,17 @@ export const BlogsPage = () => {
         <div className="flex-1 flex items-center justify-center relative z-10">
           <div className="text-center space-y-3">
             <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white">
-              Blogs &amp; Insights
+              {bannerTitle}
             </h1>
             <p className="text-white/80 text-base sm:text-lg max-w-xl mx-auto font-normal">
-              Expert perspectives on PCB assembly, EMS, and electronic manufacturing.
+              {bannerDescription}
             </p>
             {!loading && total > 0 && (
-              <p className="text-white/60 text-sm">{total} articles published</p>
+              <p className="text-white/60 text-sm">{articleCountLabel}</p>
             )}
           </div>
         </div>
       </section>
-
-      {/* Active Filter Header */}
-      {activeFilter && (
-        <div className="bg-gray-50 border-b border-gray-100 py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500 font-medium">Showing posts in</span>
-              <span className="inline-flex items-center gap-1.5 bg-[#006828] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
-                {activeFilter.type === 'category' ? decodeEntities(activeFilter.name) : `#${decodeEntities(activeFilter.name)}`}
-              </span>
-            </div>
-            <button
-              onClick={() => navigate('/blogs')}
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors cursor-pointer"
-            >
-              Clear Filter
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Grid */}
       <section className="py-16 lg:py-20">

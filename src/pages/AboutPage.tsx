@@ -11,13 +11,13 @@ export const AboutPage = () => {
     {
       author: 'Kishan Changela',
       role: 'Founder & Business Partner',
-      image: '/blog-1.png',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRii46i32zUdQ107Pxw8d-tldnquyu7_ehXe0rDUtmdJQ&s=10',
       text: 'By enrolling in the Four Bear Program, UM guarantees you will graduate in four years with a bachelor\'s degree. Discover the global city—filled with inspiration, opportunities to explore.',
     },
     {
       author: 'Shane Dore',
       role: 'PayPal',
-      image: '/blog-2.png',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEPZNI-M7HvOsJJZvsoUaGNcZIhGk_6abOVOWw-NcUpQ&s=10',
       text: 'By enrolling in the Four Bear Program, UM guarantees you will graduate in four years with a bachelor\'s degree. Discover the global city—filled with inspiration, opportunities to explore.',
     },
   ];
@@ -296,7 +296,7 @@ export const AboutPage = () => {
       {/* 5. Business Partners Section */}
       <section className="py-16 lg:py-20 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto mb-4 space-y-6">
+          <div className="max-w-2xl mx-auto mb-4 space-y-6 text-center">
             <span className="text-s font-bold text-[#0d3b2e] inline-block font-montserrat">
               A Deep Commitment to Diversity
             </span>

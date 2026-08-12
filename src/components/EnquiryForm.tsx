@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
+import { submitContactForm7 } from '../lib/contactForm7';
 
 export const EnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -23,26 +24,15 @@ export const EnquiryForm = () => {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          formType: 'enquiry',
-        }),
+      await submitContactForm7({
+        name: formData.name,
+        email: formData.email,
+        message: `Phone: ${formData.phone}\n\n${formData.message}`,
       });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', phone: '', message: '', agreed: false });
-      } else {
-        setError(data.error || 'Failed to submit enquiry. Please try again.');
-      }
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '', agreed: false });
     } catch (err) {
-      setError('An error occurred. Please try again later.');
+      setError(err instanceof Error ? err.message : 'An error occurred. Please try again later.');
     } finally {
       setSubmitting(false);
     }
