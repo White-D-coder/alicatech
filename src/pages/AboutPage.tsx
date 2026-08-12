@@ -26,7 +26,7 @@ export const AboutPage = () => {
     <div className="bg-white min-h-screen">
       <section
         className="text-white pt-12 sm:pt-16 pb-16 px-4 flex flex-col items-center justify-between relative overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
+        style={{ backgroundImage: "url('/SMT-PCB-Assembly-1.jpg')" }}
       >
         <div className="flex-1 flex items-center justify-center relative z-10">
           <h1 className="text-4xl sm:text-6xl font-bold font-montserrat tracking-wider text-white text-center text-shadow-lg">
@@ -60,7 +60,7 @@ export const AboutPage = () => {
       <div className="lg:col-span-6 space-y-3">
         <div className="rounded-[10px] overflow-hidden shadow-2xl border border-gray-100">
           <img
-            src="/media-library-download-1786351951/O1.jpg"
+            src="/O1.jpg"
             alt="Alica Technologies Global Headquarters Ahmedabad"
             className="w-full h-auto object-cover"
           />

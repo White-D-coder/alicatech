@@ -135,7 +135,7 @@ export const BlogsPage = () => {
     <div className="bg-white min-h-screen">
       <section
         className="relative pt-12 sm:pt-16 pb-16 px-4 flex flex-col items-center justify-between overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/media-library-download-1786351951/SMT-PCB-Assembly-1.jpg')" }}
+        style={{ backgroundImage: "url('/SMT-PCB-Assembly-1.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
         <div className="flex-1 flex items-center justify-center relative z-10">
