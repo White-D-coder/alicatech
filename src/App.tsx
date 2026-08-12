@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutUs } from './components/AboutUs';
@@ -14,65 +14,107 @@ import { CapabilitiesPage } from './components/CapabilitiesPage';
 import { IndustriesPage } from './components/IndustriesPage';
 import { ContactPage } from './components/ContactPage';
 
+// Helper to force scroll to top instantly without smooth scroll interference
+const scrollToTopInstant = () => {
+  if (typeof window === 'undefined') return;
+
+  const html = document.documentElement;
+  const originalScrollBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';
+
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  // Restore scrollBehavior after current frame
+  requestAnimationFrame(() => {
+    html.style.scrollBehavior = originalScrollBehavior;
+  });
+};
+
+// Ensure history.scrollRestoration is manual
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 function App() {
-  // Get the current page from the URL after refresh
+  // Get initial page from hash on refresh
   const [currentPage, setCurrentPage] = useState(() => {
-    const hash = window.location.hash.replace('#', '');
-    return hash || 'home';
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
+      return hash || 'home';
+    }
+    return 'home';
   });
 
   const [pageOpacity, setPageOpacity] = useState(true);
 
-  // ALWAYS scroll to top on page change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+  // Force scroll to top whenever currentPage changes or component updates
+  useLayoutEffect(() => {
+    scrollToTopInstant();
+    const rafId = requestAnimationFrame(() => {
+      scrollToTopInstant();
+    });
+    const timer = setTimeout(() => {
+      scrollToTopInstant();
+    }, 40);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timer);
+    };
   }, [currentPage]);
 
+  // Initial mount scroll reset
+  useEffect(() => {
+    scrollToTopInstant();
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleNavigate = (page: string) => {
+    // Save current page in URL hash
+    window.history.pushState({}, '', `#${page}`);
+
     setPageOpacity(false);
 
-    // Save the current page in the URL
-    window.history.pushState({}, '', `#${page}`);
+    // Instant top scroll right away
+    scrollToTopInstant();
 
     setTimeout(() => {
       setCurrentPage(page);
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      scrollToTopInstant();
 
       setTimeout(() => {
         setPageOpacity(true);
+        scrollToTopInstant();
       }, 30);
-    }, 120);
+    }, 100);
   };
 
-  // Handle browser Back / Forward
+  // Handle browser Back / Forward navigation
   useEffect(() => {
-    setPageOpacity(true);
-
     const handlePopState = () => {
       const hash = window.location.hash.replace('#', '');
-
       setPageOpacity(false);
+      scrollToTopInstant();
 
       setTimeout(() => {
         setCurrentPage(hash || 'home');
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        scrollToTopInstant();
 
         setTimeout(() => {
           setPageOpacity(true);
+          scrollToTopInstant();
         }, 30);
-      }, 120);
+      }, 100);
     };
 
     window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
     };
   }, []);
 
@@ -123,11 +165,18 @@ function App() {
       case 'contact':
         return <ContactPage />;
 
+      case 'blogs':
+        return (
+          <div className="pt-16 sm:pt-20">
+            <Blogs />
+          </div>
+        );
+
       case 'home':
       default:
         return (
           <>
-            <Hero />
+            <Hero onNavigate={handleNavigate} />
             <AboutUs />
             <WhatWeDo onNavigate={handleNavigate} />
             <WhyChooseAlica />
@@ -140,7 +189,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans">
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigate}
