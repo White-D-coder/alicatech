@@ -4,7 +4,7 @@ export const CapabilitiesPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* 1. Hero Section with Big Yellow Overlapping Title "Manufacturing Capabilities" */}
-      <section className="bg-white pt-20 sm:pt-28 pb-16 lg:pb-24 text-center relative overflow-hidden bg-grid-lines">
+      <section className="bg-white pt-20 sm:pt-28 pb-6 sm:pb-16 lg:pb-24 text-center relative overflow-hidden bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Yellow 2-Line Overlapping Title */}
           <div className="relative z-20 space-y-0">
@@ -57,8 +57,8 @@ export const CapabilitiesPage = () => {
       </section>
 
       {/* 2. Reliable Execution & PCB Assembly Capabilities Section */}
-      <section className="pt-12 sm:pt-20 pb-8 sm:pb-12 bg-white bg-grid-lines">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-16">
+      <section className="pt-6 sm:pt-16 pb-6 sm:pb-12 bg-white bg-grid-lines">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-16">
           {/* Reliable Execution Row */}
               <span className="text-s font-bold text-[#0d3b2e] font-montserrat">
                 Reliable Execution
@@ -84,7 +84,7 @@ export const CapabilitiesPage = () => {
           </div>
 
           {/* PCB Assembly Capabilities Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-center">
             {/* Left Image: Circuit Assembly */}
             <div className="lg:col-span-6">
               <div className="rounded-[8px] overflow-hidden shadow-2xl border border-gray-100">
@@ -141,7 +141,7 @@ export const CapabilitiesPage = () => {
           </div>
 
           {/* 3 Step Process Bar - Mobile Marquee View */}
-          <div className="block mb-0 sm:hidden py-4 overflow-hidden">
+          <div className="block mb-0 sm:hidden py-2 overflow-hidden">
             <div className="animate-marquee flex items-center space-x-6 whitespace-nowrap">
               <div className="flex items-center space-x-3 shrink-0">
                 <div className="w-8 h-8 rounded-full border-2 border-gray-300 font-bold text-gray-800 flex items-center justify-center text-xs shrink-0">
@@ -232,9 +232,9 @@ export const CapabilitiesPage = () => {
       </section>
 
       {/* 3. Component Handling Capabilities Section */}
-      <section className="bg-[#ffffff] pt-6 sm:pt-12 pb-16 sm:pb-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="bg-[#ffffff] pt-4 sm:pt-10 pb-6 sm:pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-center">
             {/* Left Content with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] font-montserrat tracking-tight leading-tight">
@@ -289,16 +289,16 @@ export const CapabilitiesPage = () => {
       </section>
 
       {/* 4. Inspection & Quality Capabilities Section */}
-      <section className="py-10 lg:py-15 bg-white bg-grid-lines">
+      <section className="py-6 sm:py-12 lg:py-16 bg-white bg-grid-lines">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-6 lg:gap-16 items-center">
             {/* Left Image: QA Inspector Engineer */}
             <div className="lg:col-span-6">
               <div className="rounded-[8px] overflow-hidden shadow-2xl border border-gray-100">
                 <img
                   src="/2151615028.jpg"
                   alt="Quality Inspector Engineer at Alica Technologies"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-auto max-h-[350px] sm:max-h-[500px] object-cover"
                 />
               </div>
             </div>
@@ -344,9 +344,9 @@ export const CapabilitiesPage = () => {
       </section>
 
       {/* 5. Testing Capabilities Section */}
-      <section className="bg-[#ffffff] py-10 lg:py-15">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="bg-[#ffffff] py-6 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-center">
             {/* Left Text with Hover Check Icons */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d3b2e] font-montserrat leading-tight">

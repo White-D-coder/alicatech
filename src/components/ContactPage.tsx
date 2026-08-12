@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, MapPin, Mail, Phone, Check } from 'lucide-react';
+import { MapPin, Mail, Phone, Check } from 'lucide-react';
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
