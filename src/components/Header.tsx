@@ -9,11 +9,21 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
-  // Derive currentPage from the route path
   const pathname = location.pathname;
+  const path = pathname.substring(1);
+  const staticPages = [
+    'about',
+    'smt-tht-pcb-assembly',
+    'testing-inspection',
+    'turnkey-project-delivery',
+    'end-to-end-electronic-manufacturing',
+    'capabilities',
+    'industries',
+    'contact'
+  ];
   const currentPage = pathname === '/' ? 'home'
-    : pathname.startsWith('/blog') ? 'blogs'
-    : pathname.substring(1);
+    : (path === 'blogs' || !staticPages.includes(path)) ? 'blogs'
+    : path;
 
   const serviceDropdownItems = [
     { name: 'SMT & THT PCB Assembly', page: 'smt-tht-pcb-assembly' },

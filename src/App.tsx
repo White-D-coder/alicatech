@@ -108,7 +108,9 @@ function App() {
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/category/:categorySlug" element={<BlogsPage />} />
+          <Route path="/tags/:tagSlug" element={<BlogsPage />} />
+          <Route path="/:slug" element={<BlogPostPage />} />
           <Route
             path="*"
             element={

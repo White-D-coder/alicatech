@@ -107,7 +107,7 @@ async function run() {
           || '';
 
         routes.push({
-          url: `/blog/${post.slug}`,
+          url: `/${post.slug}`,
           title: `${title} | Alica Technologies LLP`,
           description: description,
           image: imageUrl,

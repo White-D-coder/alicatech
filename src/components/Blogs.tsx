@@ -24,6 +24,7 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, onClick }: BlogCardProps) => {
+  const navigate = useNavigate();
   const imageUrl = getFeaturedImageUrl(post, 'liquid-style16-lb');
   const categories = getPostCategories(post);
   const excerpt = stripHtml(post.excerpt.rendered).slice(0, 130) + '…';
@@ -51,7 +52,13 @@ const BlogCard = ({ post, onClick }: BlogCardProps) => {
           )}
           {/* Category Badge */}
           {categories[0] && (
-            <span className="absolute top-3 left-3 bg-[#006828] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/category/${categories[0].slug}`);
+              }}
+              className="absolute top-3 left-3 bg-[#006828] hover:bg-[#0d3b2e] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-colors cursor-pointer z-10"
+            >
               {decodeEntities(categories[0].name)}
             </span>
           )}
@@ -134,7 +141,7 @@ export const Blogs = () => {
                 <BlogCard
                   key={post.id}
                   post={post}
-                  onClick={() => navigate(`/blog/${post.slug}`)}
+                  onClick={() => navigate(`/${post.slug}`)}
                 />
               ))}
         </div>

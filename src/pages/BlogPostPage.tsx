@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   getPostBySlug, getPosts, getFeaturedImageUrl,
   getPostCategories, getPostTags, stripHtml,
-  formatDate, readingTime, decodeEntities, type WPPost,
+  formatDate, decodeEntities, type WPPost,
 } from '../lib/wpi';
 
 // ─── Content processor ────────────────────────────────────────────────────────
@@ -223,7 +223,7 @@ const injectSchema = (post: WPPost, faqs: { q: string; a: string }[]) => {
       logo: { '@type': 'ImageObject', url: 'https://alicatechnologies.com/Alica-green.svg' },
     },
     author: { '@type': 'Organization', name: 'Alica Technologies LLP' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${window.location.origin}/blog/${post.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${window.location.origin}/${post.slug}` },
   }];
 
   if (faqs.length) {
@@ -248,7 +248,7 @@ const updateMetaTags = (post: WPPost) => {
   const title = stripHtml(post.title.rendered);
   const description = stripHtml(post.excerpt.rendered).slice(0, 160) + '...';
   const imageUrl = getFeaturedImageUrl(post, 'full') || 'https://alicatechnologies.com/Alica-green.svg';
-  const url = typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.slug}` : '';
+  const url = typeof window !== 'undefined' ? `${window.location.origin}/${post.slug}` : '';
 
   document.title = `${title} | Alica Technologies LLP`;
 
@@ -367,7 +367,6 @@ export const BlogPostPage = () => {
   const imageUrl = getFeaturedImageUrl(post, 'full');
   const categories = getPostCategories(post);
   const tags = getPostTags(post);
-  const rt = readingTime(post.content.rendered);
   const author = post._embedded?.author?.[0];
 
   return (
@@ -388,10 +387,13 @@ export const BlogPostPage = () => {
           {/* Category pills */}
           <div className="flex flex-wrap items-center gap-2 mb-4">
             {categories.map((cat) => (
-              <span key={cat.id}
-                className="bg-[#ffc82e] text-[#0d3b2e] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              <button
+                key={cat.id}
+                onClick={() => navigate(`/category/${cat.slug}`)}
+                className="bg-[#ffc82e] text-[#0d3b2e] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm hover:bg-white hover:text-[#0d3b2e] transition-all duration-200 cursor-pointer"
+              >
                 {decodeEntities(cat.name)}
-              </span>
+              </button>
             ))}
           </div>
 
@@ -416,12 +418,6 @@ export const BlogPostPage = () => {
                 <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
               </svg>
               {formatDate(post.date)}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-              </svg>
-              {rt}
             </span>
           </div>
         </div>
@@ -473,10 +469,13 @@ export const BlogPostPage = () => {
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Tagged in</p>
                 <div className="flex flex-wrap gap-2">
                   {tags.map((tag) => (
-                    <span key={tag.id}
-                      className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full hover:bg-[#f0fdf4] hover:text-[#006828] transition-colors cursor-default">
-                      #{tag.name}
-                    </span>
+                    <button
+                      key={tag.id}
+                      onClick={() => navigate(`/tags/${tag.slug}`)}
+                      className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full hover:bg-[#f0fdf4] hover:text-[#006828] transition-colors cursor-pointer"
+                    >
+                      #{decodeEntities(tag.name)}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -520,7 +519,7 @@ export const BlogPostPage = () => {
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 px-2">More Articles</p>
                 <div className="space-y-1">
                   {related.map((rp) => (
-                    <RelatedCard key={rp.id} post={rp} onClick={() => navigate(`/blog/${rp.slug}`)} />
+                    <RelatedCard key={rp.id} post={rp} onClick={() => navigate(`/${rp.slug}`)} />
                   ))}
                 </div>
               </div>

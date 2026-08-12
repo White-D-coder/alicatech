@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   getPosts, getFeaturedImageUrl, getPostCategories,
-  stripHtml, formatDate, readingTime, decodeEntities, POSTS_PER_PAGE, type WPPost,
+  stripHtml, formatDate, decodeEntities, POSTS_PER_PAGE, type WPPost,
+  getCategoryBySlug, getTagBySlug,
 } from '../lib/wpi';
 
 // ─── Skeleton card ────────────────────────────────────────────────────────────
@@ -23,11 +24,11 @@ const CardSkeleton = () => (
 // ─── Post card ────────────────────────────────────────────────────────────────
 
 const PostCard = ({ post, onClick }: { post: WPPost; onClick: () => void }) => {
+  const navigate = useNavigate();
   const imageUrl = getFeaturedImageUrl(post, 'liquid-style16-lb');
   const categories = getPostCategories(post);
   const title = stripHtml(post.title.rendered);
   const excerpt = stripHtml(post.excerpt.rendered).slice(0, 140) + '…';
-  const rt = readingTime(post.excerpt.rendered);
 
   return (
     <article
@@ -50,7 +51,13 @@ const PostCard = ({ post, onClick }: { post: WPPost; onClick: () => void }) => {
           </div>
         )}
         {categories[0] && (
-          <span className="absolute top-3 left-3 bg-[#006828] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+          <span
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/category/${categories[0].slug}`);
+            }}
+            className="absolute top-3 left-3 bg-[#006828] hover:bg-[#0d3b2e] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full transition-colors cursor-pointer z-10"
+          >
             {decodeEntities(categories[0].name)}
           </span>
         )}
@@ -60,8 +67,6 @@ const PostCard = ({ post, onClick }: { post: WPPost; onClick: () => void }) => {
       <div className="flex flex-col flex-1 p-6 space-y-2">
         <div className="flex items-center gap-2 text-xs text-gray-400 flex-wrap">
           <span>{formatDate(post.date)}</span>
-          <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
-          <span>{rt}</span>
         </div>
         <h2 className="text-lg font-bold text-[#0d3b2e] group-hover:text-[#006828] transition-colors leading-snug line-clamp-2 font-montserrat">
           {title}
@@ -82,6 +87,9 @@ const PostCard = ({ post, onClick }: { post: WPPost; onClick: () => void }) => {
 
 export const BlogsPage = () => {
   const navigate = useNavigate();
+  const { categorySlug, tagSlug } = useParams<{ categorySlug?: string; tagSlug?: string }>();
+  const [activeFilter, setActiveFilter] = useState<{ id: number; name: string; type: 'category' | 'tag' } | null>(null);
+
   const [posts, setPosts] = useState<WPPost[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -96,6 +104,58 @@ export const BlogsPage = () => {
     document.title = 'Latest Blogs & News | Alica Technologies LLP';
   }, []);
 
+  // Resolve category/tag slug to ID & Name
+  useEffect(() => {
+    let active = true;
+    const resolveFilter = async () => {
+      if (categorySlug) {
+        setLoading(true);
+        setError(null);
+        try {
+          const cat = await getCategoryBySlug(categorySlug);
+          if (!active) return;
+          if (cat) {
+            setActiveFilter({ id: cat.id, name: cat.name, type: 'category' });
+          } else {
+            setError('Category not found');
+            setLoading(false);
+          }
+        } catch (err) {
+          if (active) {
+            setError('Error loading category details');
+            setLoading(false);
+          }
+        }
+      } else if (tagSlug) {
+        setLoading(true);
+        setError(null);
+        try {
+          const tag = await getTagBySlug(tagSlug);
+          if (!active) return;
+          if (tag) {
+            setActiveFilter({ id: tag.id, name: tag.name, type: 'tag' });
+          } else {
+            setError('Tag not found');
+            setLoading(false);
+          }
+        } catch (err) {
+          if (active) {
+            setError('Error loading tag details');
+            setLoading(false);
+          }
+        }
+      } else {
+        setActiveFilter(null);
+      }
+    };
+
+    resolveFilter();
+
+    return () => {
+      active = false;
+    };
+  }, [categorySlug, tagSlug]);
+
   // Fetch a given page and either set or append
   const fetchPage = useCallback(async (pageNum: number, append: boolean) => {
     abortRef.current?.abort();
@@ -106,7 +166,21 @@ export const BlogsPage = () => {
     else { setLoading(true); setError(null); }
 
     try {
-      const { posts: data, totalPages: tp, total: t } = await getPosts(pageNum, POSTS_PER_PAGE, ctrl.signal);
+      const options: { categories?: number; tags?: number } = {};
+      if (activeFilter) {
+        if (activeFilter.type === 'category') {
+          options.categories = activeFilter.id;
+        } else if (activeFilter.type === 'tag') {
+          options.tags = activeFilter.id;
+        }
+      }
+
+      const { posts: data, totalPages: tp, total: t } = await getPosts(
+        pageNum,
+        POSTS_PER_PAGE,
+        options,
+        ctrl.signal
+      );
       if (ctrl.signal.aborted) return;
       setPosts((prev) => (append ? [...prev, ...data] : data));
       setTotalPages(tp);
@@ -121,13 +195,19 @@ export const BlogsPage = () => {
         setLoadingMore(false);
       }
     }
-  }, []);
+  }, [activeFilter]);
 
-  // Initial load
+  // Fetch page 1 when activeFilter changes (or when it resets to null)
   useEffect(() => {
+    if (categorySlug && (!activeFilter || activeFilter.type !== 'category')) return;
+    if (tagSlug && (!activeFilter || activeFilter.type !== 'tag')) return;
+
+    setPosts([]);
+    setPage(1);
     fetchPage(1, false);
+
     return () => abortRef.current?.abort();
-  }, [fetchPage]);
+  }, [activeFilter, categorySlug, tagSlug, fetchPage]);
 
   const hasMore = page < totalPages;
 
@@ -153,6 +233,30 @@ export const BlogsPage = () => {
         </div>
       </section>
 
+      {/* Active Filter Header */}
+      {activeFilter && (
+        <div className="bg-gray-50 border-b border-gray-100 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500 font-medium">Showing posts in</span>
+              <span className="inline-flex items-center gap-1.5 bg-[#006828] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                {activeFilter.type === 'category' ? decodeEntities(activeFilter.name) : `#${decodeEntities(activeFilter.name)}`}
+              </span>
+            </div>
+            <button
+              onClick={() => navigate('/blogs')}
+              className="inline-flex items-center gap-1 text-xs font-bold text-[#0d3b2e] hover:text-[#006828] transition-colors cursor-pointer"
+            >
+              Clear Filter
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Grid */}
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,13 +273,13 @@ export const BlogsPage = () => {
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {loading
+                {loading && posts.length === 0
                   ? Array.from({ length: POSTS_PER_PAGE }).map((_, i) => <CardSkeleton key={i} />)
                   : posts.map((post) => (
                       <PostCard
                         key={post.id}
                         post={post}
-                        onClick={() => navigate(`/blog/${post.slug}`)}
+                        onClick={() => navigate(`/${post.slug}`)}
                       />
                     ))}
 

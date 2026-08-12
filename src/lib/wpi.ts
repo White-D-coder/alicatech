@@ -118,20 +118,30 @@ async function wpFetch<T>(
 export async function getPosts(
   page = 1,
   perPage = POSTS_PER_PAGE,
+  options?: { categories?: number; tags?: number },
   signal?: AbortSignal,
 ): Promise<PostsResponse> {
-  const cacheKey = `posts-${page}-${perPage}`;
+  const cacheKey = `posts-${page}-${perPage}-${options?.categories ?? ''}-${options?.tags ?? ''}`;
   const cached = getCached<PostsResponse>(cacheKey);
   if (cached) return cached;
 
+  const params: Record<string, string | number> = {
+    page,
+    per_page: perPage,
+    _embed: 'wp:featuredmedia,wp:term',   // skip author embed for cards
+    _fields: LIST_FIELDS,
+  };
+
+  if (options?.categories) {
+    params.categories = options.categories;
+  }
+  if (options?.tags) {
+    params.tags = options.tags;
+  }
+
   const { data, headers } = await wpFetch<WPPost[]>(
     '/posts',
-    {
-      page,
-      per_page: perPage,
-      _embed: 'wp:featuredmedia,wp:term',   // skip author embed for cards
-      _fields: LIST_FIELDS,
-    },
+    params,
     signal,
   );
 
@@ -241,8 +251,34 @@ export function formatDate(dateStr: string): string {
   });
 }
 
-export function readingTime(htmlContent: string): string {
-  const wordCount = stripHtml(htmlContent).split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(1, Math.ceil(wordCount / 200));
-  return `${minutes} min read`;
+export async function getCategoryBySlug(slug: string, signal?: AbortSignal): Promise<WPCategory | null> {
+  const cacheKey = `category-slug-${slug}`;
+  const cached = getCached<WPCategory>(cacheKey);
+  if (cached) return cached;
+
+  const { data } = await wpFetch<WPCategory[]>(
+    '/categories',
+    { slug },
+    signal,
+  );
+  if (!data.length) return null;
+  const category = data[0];
+  setCache(cacheKey, category);
+  return category;
+}
+
+export async function getTagBySlug(slug: string, signal?: AbortSignal): Promise<WPTag | null> {
+  const cacheKey = `tag-slug-${slug}`;
+  const cached = getCached<WPTag>(cacheKey);
+  if (cached) return cached;
+
+  const { data } = await wpFetch<WPTag[]>(
+    '/tags',
+    { slug },
+    signal,
+  );
+  if (!data.length) return null;
+  const tag = data[0];
+  setCache(cacheKey, tag);
+  return tag;
 }
